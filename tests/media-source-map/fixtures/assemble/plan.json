@@ -1,0 +1,76 @@
+{
+  "blocks": [
+    {
+      "start": "C0001",
+      "speaker": "SPK001"
+    },
+    {
+      "start": "C0002",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0004",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0005",
+      "speaker": "SPK003"
+    },
+    {
+      "start": "C0006",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0007",
+      "speaker": "SPK001"
+    },
+    {
+      "start": "C0008",
+      "speaker": "SPK003"
+    },
+    {
+      "start": "C0009",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0011",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0012",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0013",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0014",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0016",
+      "speaker": "SPK001"
+    },
+    {
+      "start": "C0017",
+      "speaker": "SPK003"
+    },
+    {
+      "start": "C0018",
+      "speaker": "SPK001"
+    },
+    {
+      "start": "C0019",
+      "speaker": "SPK002"
+    },
+    {
+      "start": "C0020",
+      "speaker": "SPK003"
+    },
+    {
+      "start": "C0021",
+      "speaker": null
+    }
+  ]
+}

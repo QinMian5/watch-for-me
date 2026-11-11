@@ -1,0 +1,33 @@
+name: watch-for-me
+version: 1.0.0
+description: >
+  Review the complete bilingual Reader of one Media Source Map, then route the
+  map through the lens that matches the source's organizing structure and write
+  source-grounded notes.json.
+
+always_load:
+  - static/core/principles.md
+  - static/core/workflow.md
+  - static/core/output-contract.md
+
+axes:
+  reading_type:
+    detect: |
+      Read the dominant media.reading_type from source_map.json. Load one
+      secondary value when a substantial section uses another organizing
+      structure and that lens changes the explanation.
+    values:
+      expository: static/fragments/reading_type/expository.md
+      procedural: static/fragments/reading_type/procedural.md
+      dialogic: static/fragments/reading_type/dialogic.md
+      reportorial: static/fragments/reading_type/reportorial.md
+      reflective: static/fragments/reading_type/reflective.md
+    default: expository
+    multi: true
+
+references:
+  on_demand:
+    - condition: teaching a course, lecture, lesson, tutorial, educational explainer, or material the user wants to learn or understand
+      path: references/course-guidance.md
+    - condition: writing or checking notes.json
+      path: references/notes-schema.md

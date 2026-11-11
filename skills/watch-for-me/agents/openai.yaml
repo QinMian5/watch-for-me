@@ -1,0 +1,4 @@
+interface:
+  display_name: "Watch for Me"
+  short_description: "Watch audio and video for you as a full transcript and grounded notes"
+  default_prompt: "Use $watch-for-me to turn this recording into a complete bilingual transcript and source-linked notes."

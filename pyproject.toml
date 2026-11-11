@@ -1,0 +1,43 @@
+[project]
+name = "watch-for-me"
+version = "1.0.0"
+description = "Watch for Me development workspace: skill scripts and their tests"
+readme = "README.md"
+# Skill scripts run in the runtimes setup prepares; the lowest pinned one is Python 3.12.
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+required-version = ">=0.12.18"
+# The repository ships skills, not a Python package.
+package = false
+
+[dependency-groups]
+dev = ["ruff>=0.16.6,<1", "ty>=0.0.100", "pydantic>=2", "pyyaml>=6"]
+
+[tool.ty.environment]
+python-version = "3.12"
+# Scripts import their siblings by path at runtime.
+extra-paths = [
+    "skills/media-shared/media-render/scripts",
+    "skills/media-shared/media-source-map/scripts",
+    "skills/media-shared/media-transcription/scripts",
+    "skills/setup-watch-for-me/scripts",
+]
+
+[tool.ty.analysis]
+# Heavy model runtimes live in setup's own environments, not the development one.
+allowed-unresolved-imports = ["torch", "pyannote.**", "faster_whisper", "huggingface_hub"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C4", "PIE", "RUF", "ANN", "TID"]
+ignore = ["B008"]
+
+[tool.ruff.format]
+line-ending = "auto"
+quote-style = "double"
+docstring-code-format = true

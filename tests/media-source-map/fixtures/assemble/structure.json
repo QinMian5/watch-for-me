@@ -1,0 +1,121 @@
+{
+  "media": {
+    "kind": "video",
+    "title": "Checkout payment retries — design review",
+    "source_type": "local-video",
+    "origin": "recordings/checkout-design-review.mp4",
+    "source_id": null,
+    "duration_seconds": 430,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "dialogic",
+    "transcript_provenance": "whisper-asr",
+    "asr": {
+      "backend": "faster-whisper",
+      "quality": "balanced",
+      "model": "large-v3-turbo",
+      "device": "cuda",
+      "compute_type": "float16",
+      "detected_language": "en",
+      "parameters": {
+        "beam_size": 5,
+        "vad_filter": true
+      }
+    }
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": "Dana Lee"
+    },
+    {
+      "id": "SPK002",
+      "name": "Priya Nair"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S006",
+      "speaker_confidence": "low",
+      "attribution_note": "Overlaps the end of S005; assigned from the addressed question and voice continuity, not a clean acoustic turn.",
+      "confidence": "medium"
+    },
+    {
+      "id": "S007",
+      "confidence": "low"
+    },
+    {
+      "id": "S013",
+      "text": "Okay. Let's go with the server-side key and twenty-four hours for cards. That's decided."
+    },
+    {
+      "id": "S018",
+      "overlap": true,
+      "confidence": "low",
+      "speaker_confidence": "unknown"
+    }
+  ],
+  "fixes": [
+    {
+      "block": "S002",
+      "find": "idem potency key",
+      "replace": "idempotency key",
+      "reason": "ASR split the word; the speaker says idempotency elsewhere."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Why retries double-charge",
+      "blocks": [
+        "S001",
+        "S007"
+      ]
+    },
+    {
+      "title": "Shadow rollout demo",
+      "blocks": [
+        "S008",
+        "S012"
+      ],
+      "reading_type": "procedural"
+    },
+    {
+      "title": "Decision and follow-ups",
+      "blocks": [
+        "S013",
+        "S018"
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "timestamp": "00:03:10",
+      "related_blocks": [
+        "S009"
+      ]
+    },
+    {
+      "timestamp": "00:03:40",
+      "related_blocks": [
+        "S010",
+        "S011"
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "kind": "coverage",
+      "start": "00:04:49",
+      "end": "00:05:40",
+      "detail": "录音中断约 51 秒，这段内容缺失。"
+    },
+    {
+      "kind": "speaker",
+      "start": "00:01:57",
+      "end": "00:02:09",
+      "detail": "S006 与上一句重叠，归属为 Dana Lee 的把握较低。"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+name: setup-watch-for-me
+version: 1.0.0
+description: >
+  Inspect the environment and configure shared local Whisper and speaker tooling.
+
+always_load:
+  - static/core/config.md
+  - static/core/uv.md
+
+axes:
+  asr_backend:
+    detect: |
+      Use whisper.cpp on macOS arm64. Use faster-whisper on macOS Intel. On
+      Windows or Linux use faster-whisper with CUDA when NVIDIA and CTranslate2
+      CUDA support both verify, and use the CPU profile for the remaining systems.
+      Record the verified route as the configured backend.
+    values:
+      whisper.cpp: static/fragments/asr/whisper-cpp.md
+      faster-whisper: static/fragments/asr/faster-whisper.md
+    multi: false
+  diarization_backend:
+    detect: Load for initial full setup, missing acoustic diarization configuration, or diarization device reconfiguration.
+    values:
+      pyannote.audio: static/fragments/diarization/pyannote.md
+    multi: false

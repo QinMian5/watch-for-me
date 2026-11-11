@@ -1,0 +1,42 @@
+{
+  "name": "watch-for-me",
+  "version": "1.0.0",
+  "description": "Let your agent watch audio and video for you: a complete bilingual transcript and source-linked notes, with local transcription and speaker attribution.",
+  "author": {
+    "name": "Mian Qin",
+    "url": "https://github.com/QinMian5"
+  },
+  "homepage": "https://github.com/QinMian5/watch-for-me",
+  "repository": "https://github.com/QinMian5/watch-for-me",
+  "license": "Apache-2.0",
+  "keywords": [
+    "watch-for-me",
+    "media",
+    "audio",
+    "video",
+    "transcript",
+    "notes",
+    "diarization",
+    "transcription",
+    "whisper"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Watch for Me",
+    "shortDescription": "Let your agent watch audio and video for you.",
+    "longDescription": "Configure local Whisper and speaker diarization, then turn local audio, local video, or online video into a complete bilingual transcript and source-linked notes on one offline page, with video-only visual evidence.",
+    "developerName": "Mian Qin",
+    "category": "Productivity",
+    "capabilities": [
+      "Local tools",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Set up Watch for Me for this environment.",
+      "Watch this video for me and give me the full bilingual transcript and notes.",
+      "Organize this recording with feedback, decisions, and action items.",
+      "Help me learn this lecture with notes linked to the source."
+    ]
+  }
+}

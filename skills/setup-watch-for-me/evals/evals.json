@@ -1,0 +1,23 @@
+{
+  "skill_name": "setup-watch-for-me",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请帮我配置 Watch for Me。我现在在一个 Git 仓库里，用的是 Apple Silicon Mac。",
+      "expected_output": "Resolve existing/request choices before asking for missing scope, language, media output root, quality, and browser only if online acquisition needs it. Derive and verify whisper.cpp with Metal/Core ML and an independent MPS diarization profile. Use CPU only by request or after reporting GPU unavailability/failure and verifying CPU inference. Present exact current-schema YAML and necessary setup actions. Community-1 access uses a user-entered terminal token and pinned local snapshot, never stored credentials. Report missing access or failed real-model smoke test as incomplete.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Watch for Me says configuration is missing. Configure it on this Windows machine.",
+      "expected_output": "Resolve existing/request choices before asking for missing scope, language, media output root, quality, and browser only if online acquisition needs it. Derive and verify the platform Whisper backend and independent CUDA diarization profile when available; report and verify CPU fallback otherwise. Present exact current-schema YAML and necessary setup actions. Community-1 access uses a user-entered terminal token and pinned local snapshot, never stored credentials. Report missing access or failed real-model smoke test as incomplete.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Configure local audio processing on Apple Silicon. Whisper already works, but Community-1 is absent. I have not accepted its Hugging Face conditions.",
+      "expected_output": "Reuse verified Whisper. Prepare local diarization with MPS as the preferred Apple Silicon device. Explain the required HF access and terminal-only token input. Do not save an MPS profile as verified until local sample inference passes; do not request browser cookies for local audio.",
+      "files": []
+    }
+  ]
+}

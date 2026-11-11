@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "watch-for-me",
+  "displayName": "Watch for Me",
+  "version": "1.0.0",
+  "description": "Let your agent watch audio and video for you: a complete bilingual transcript and source-linked notes, with local transcription and speaker attribution.",
+  "author": {
+    "name": "Mian Qin",
+    "url": "https://github.com/QinMian5"
+  },
+  "homepage": "https://github.com/QinMian5/watch-for-me",
+  "repository": "https://github.com/QinMian5/watch-for-me",
+  "license": "Apache-2.0",
+  "keywords": [
+    "watch-for-me",
+    "media",
+    "audio",
+    "video",
+    "transcript",
+    "notes",
+    "diarization",
+    "transcription",
+    "whisper"
+  ],
+  "skills": "./skills/"
+}

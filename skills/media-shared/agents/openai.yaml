@@ -1,0 +1,6 @@
+interface:
+  display_name: "Media Shared Resources"
+  short_description: "Shared resources for Watch for Me skills only"
+  default_prompt: "Use $media-shared only as a support package requested by another Watch for Me skill."
+policy:
+  allow_implicit_invocation: false

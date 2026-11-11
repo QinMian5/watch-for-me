@@ -1,0 +1,81 @@
+{
+  "backend": "pyannote.audio",
+  "model": "pyannote/speaker-diarization-community-1",
+  "revision": "0000000",
+  "device": "cuda",
+  "duration_seconds": 430,
+  "audio_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "parameters": {
+    "min_speakers": 3,
+    "max_speakers": 3
+  },
+  "speaker_count": 3,
+  "speakers": [
+    "SPK001",
+    "SPK002",
+    "SPK003"
+  ],
+  "turns": [
+    {
+      "start": 5.0,
+      "end": 21.0,
+      "speaker": "SPK001"
+    },
+    {
+      "start": 22.0,
+      "end": 74.0,
+      "speaker": "SPK002"
+    },
+    {
+      "start": 76.0,
+      "end": 98.0,
+      "speaker": "SPK003"
+    },
+    {
+      "start": 99.0,
+      "end": 118.0,
+      "speaker": "SPK002"
+    },
+    {
+      "start": 117.0,
+      "end": 129.0,
+      "speaker": "SPK001"
+    },
+    {
+      "start": 130.0,
+      "end": 151.0,
+      "speaker": "SPK003"
+    },
+    {
+      "start": 160.0,
+      "end": 288.0,
+      "speaker": "SPK002"
+    },
+    {
+      "start": 341.0,
+      "end": 362.0,
+      "speaker": "SPK001"
+    },
+    {
+      "start": 363.0,
+      "end": 380.0,
+      "speaker": "SPK003"
+    },
+    {
+      "start": 381.0,
+      "end": 393.0,
+      "speaker": "SPK001"
+    },
+    {
+      "start": 394.0,
+      "end": 412.0,
+      "speaker": "SPK002"
+    },
+    {
+      "start": 413.0,
+      "end": 428.0,
+      "speaker": "SPK003"
+    }
+  ],
+  "exclusive_turns": []
+}

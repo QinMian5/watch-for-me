@@ -1,0 +1,21 @@
+name: media-shared
+version: 1.0.0
+description: >
+  Package index for the shared Media modules. Agents enter through SKILL.md,
+  which names each module and what it returns.
+
+always_load: []
+
+modules:
+  on_demand:
+    - condition: building, validating, reusing, or translating a Media Source Map
+      path: media-source-map/manifest.yaml
+    - condition: preparing audio, running local ASR, or attributing speakers
+      path: media-transcription/manifest.yaml
+    - condition: rendering a Media Bundle or reading its diagnostics
+      path: media-render/manifest.yaml
+
+references:
+  on_demand:
+    - condition: answering a source-linked question or transcribing or translating a requested excerpt
+      path: references/grounding-rules.md

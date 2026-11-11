@@ -1,0 +1,173 @@
+{
+  "timing": "cue",
+  "transcription": [
+    {
+      "id": "C0001",
+      "offsets": {
+        "from": 5000,
+        "to": 21000
+      },
+      "text": "Thanks for joining. The goal today is to decide how checkout handles payment retries, because last month's incident double-charged about two hundred customers."
+    },
+    {
+      "id": "C0002",
+      "offsets": {
+        "from": 22000,
+        "to": 35500
+      },
+      "text": "The root cause is that the client retries on a timeout, but the server may have already captured the payment."
+    },
+    {
+      "id": "C0003",
+      "offsets": {
+        "from": 35500,
+        "to": 49000
+      },
+      "text": "We have no idem potency key, so the second attempt looks like a new charge."
+    },
+    {
+      "id": "C0004",
+      "offsets": {
+        "from": 50000,
+        "to": 74000
+      },
+      "text": "My proposal is a server-generated idempotency key stored for twenty-four hours. If the same key arrives again, we return the first result."
+    },
+    {
+      "id": "C0005",
+      "offsets": {
+        "from": 76000,
+        "to": 98000
+      },
+      "text": "I worry about the twenty-four hour window. Bank transfers can settle after two days, so a retry on day three would still double-charge."
+    },
+    {
+      "id": "C0006",
+      "offsets": {
+        "from": 99000,
+        "to": 118000
+      },
+      "text": "Transfers don't go through this path today, so I'd keep it at twenty-four hours for cards and revisit when we add transfers."
+    },
+    {
+      "id": "C0007",
+      "offsets": {
+        "from": 117000,
+        "to": 129000
+      },
+      "text": "Right, and storage cost is not really the constraint here, is it?"
+    },
+    {
+      "id": "C0008",
+      "offsets": {
+        "from": 130000,
+        "to": 151000
+      },
+      "text": "It's cheap. Uh, maybe forty... forty gigs a month at current volume."
+    },
+    {
+      "id": "C0009",
+      "offsets": {
+        "from": 160000,
+        "to": 171000
+      },
+      "text": "Let me show how I'd roll it out."
+    },
+    {
+      "id": "C0010",
+      "offsets": {
+        "from": 171000,
+        "to": 182000
+      },
+      "text": "First, turn on the flag in shadow mode, so keys are written but never enforced."
+    },
+    {
+      "id": "C0011",
+      "offsets": {
+        "from": 183000,
+        "to": 205000
+      },
+      "text": "The command is rollout set idempotency, mode shadow, percent five. We start at five percent so a bug in key generation can't touch most traffic."
+    },
+    {
+      "id": "C0012",
+      "offsets": {
+        "from": 206000,
+        "to": 232000
+      },
+      "text": "Now watch the dashboard. The panel you want is would-have-deduped. It should stay near zero except for real client retries."
+    },
+    {
+      "id": "C0013",
+      "offsets": {
+        "from": 233000,
+        "to": 260000
+      },
+      "text": "If that panel jumps above one percent, roll back by setting the mode to off. That's a sign keys are colliding."
+    },
+    {
+      "id": "C0014",
+      "offsets": {
+        "from": 261000,
+        "to": 274500
+      },
+      "text": "Once it's flat for a full day, switch to enforce at five percent, then go to a hundred."
+    },
+    {
+      "id": "C0015",
+      "offsets": {
+        "from": 274500,
+        "to": 288000
+      },
+      "text": "Ramping through twenty-five is optional, I'd only do it before a holiday."
+    },
+    {
+      "id": "C0016",
+      "offsets": {
+        "from": 341000,
+        "to": 362000
+      },
+      "text": "okay lets go with the server side key and twenty four hours for cards thats decided"
+    },
+    {
+      "id": "C0017",
+      "offsets": {
+        "from": 363000,
+        "to": 380000
+      },
+      "text": "I still think the window should be configurable per payment method. I don't want to be hard-coding this again."
+    },
+    {
+      "id": "C0018",
+      "offsets": {
+        "from": 381000,
+        "to": 393000
+      },
+      "text": "Let's keep that as an open question until transfers are on the roadmap."
+    },
+    {
+      "id": "C0019",
+      "offsets": {
+        "from": 394000,
+        "to": 412000
+      },
+      "text": "I'll have the shadow rollout up by Friday."
+    },
+    {
+      "id": "C0020",
+      "offsets": {
+        "from": 413000,
+        "to": 428000
+      },
+      "text": "Someone should probably update the client retry docs."
+    },
+    {
+      "id": "C0021",
+      "offsets": {
+        "from": 429000,
+        "to": 430000
+      },
+      "text": "(crosstalk) ...and the changelog too."
+    }
+  ]
+}

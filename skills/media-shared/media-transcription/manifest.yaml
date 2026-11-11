@@ -1,0 +1,17 @@
+name: media-transcription
+description: Prepare one shared audio timeline, run local Whisper and acoustic diarization, and validate their timestamped evidence.
+always_load:
+  - core/workflow.md
+axes:
+  asr_backend:
+    detect: Select only when original-language timed text is unavailable, using resolved asr.backend.
+    values:
+      whisper.cpp: fragments/asr/whisper-cpp.md
+      faster-whisper: fragments/asr/faster-whisper.md
+    multi: false
+references:
+  on_demand:
+    - condition: running or verifying local ASR
+      path: references/whisper.md
+    - condition: attributing speakers or processing an unknown speaker count
+      path: references/speakers.md

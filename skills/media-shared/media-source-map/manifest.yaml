@@ -1,0 +1,29 @@
+name: media-source-map
+description: Ensure one current bilingual Media Source Map from local audio, local video, online video, or a validated bundle.
+always_load:
+  - core/configuration.md
+  - core/workflow.md
+axes:
+  source_format:
+    detect: Select online-video for a supported video URL, local-video for a readable video, or local-audio for an audio recording or locally available attachment.
+    values:
+      online-video: fragments/source/online-video.md
+      local-video: fragments/source/local-video.md
+      local-audio: fragments/source/local-audio.md
+    multi: false
+references:
+  on_demand:
+    - condition: building or translating a source map
+      path: core/source-map-contract.md
+    - condition: building a source map from assembled blocks, or refreshing its translations
+      path: references/assembly.md
+    - condition: publishing a source map
+      path: core/output-contract.md
+    - condition: preparing a raw audio or video source
+      path: core/source-preparation.md
+    - condition: translating source blocks or section titles
+      path: references/translation.md
+    - condition: media.kind is video and visual evidence is being built
+      path: references/visual-evidence.md
+    - condition: an existing map fails with fields removed from an earlier format, or the bundle holds files from an earlier version
+      path: references/older-bundles.md

@@ -1,0 +1,35 @@
+{
+  "name": "watch-for-me",
+  "owner": {
+    "name": "Mian Qin",
+    "url": "https://github.com/QinMian5"
+  },
+  "description": "Let your agent watch audio and video for you and turn them into complete transcripts and source-linked notes.",
+  "plugins": [
+    {
+      "name": "watch-for-me",
+      "displayName": "Watch for Me",
+      "source": "./",
+      "description": "Configure local media tooling, then turn a recording into a complete bilingual transcript and source-linked notes.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Mian Qin",
+        "url": "https://github.com/QinMian5"
+      },
+      "homepage": "https://github.com/QinMian5/watch-for-me",
+      "repository": "https://github.com/QinMian5/watch-for-me",
+      "license": "Apache-2.0",
+      "keywords": [
+        "watch-for-me",
+        "media",
+        "audio",
+        "video",
+        "transcript",
+        "notes",
+        "transcription",
+        "whisper"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

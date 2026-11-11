@@ -1,0 +1,6 @@
+interface:
+  display_name: "Setup Watch for Me"
+  short_description: "Configure local transcription and speaker attribution"
+  default_prompt: "Use $setup-watch-for-me to configure local media processing."
+policy:
+  allow_implicit_invocation: true

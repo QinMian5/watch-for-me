@@ -1,0 +1,471 @@
+{
+  "media": {
+    "kind": "video",
+    "title": "Checkout payment retries — design review",
+    "source_type": "local-video",
+    "origin": "recordings/checkout-design-review.mp4",
+    "source_id": null,
+    "duration_seconds": 430,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "dialogic",
+    "transcript_provenance": "whisper-asr",
+    "asr": {
+      "backend": "faster-whisper",
+      "quality": "balanced",
+      "model": "large-v3-turbo",
+      "device": "cuda",
+      "compute_type": "float16",
+      "detected_language": "en",
+      "parameters": {
+        "beam_size": 5,
+        "vad_filter": true
+      }
+    }
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": "Dana Lee"
+    },
+    {
+      "id": "SPK002",
+      "name": "Priya Nair"
+    },
+    {
+      "id": "SPK003",
+      "name": null
+    }
+  ],
+  "speaker_turns": [
+    {
+      "speaker": "SPK001",
+      "start": "00:00:05",
+      "end": "00:00:21"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:00:22",
+      "end": "00:01:14"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:01:16",
+      "end": "00:01:38"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:01:39",
+      "end": "00:01:58"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:01:57",
+      "end": "00:02:09"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:02:10",
+      "end": "00:02:31"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:02:40",
+      "end": "00:04:48"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:05:41",
+      "end": "00:06:02"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:06:03",
+      "end": "00:06:20"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:06:21",
+      "end": "00:06:33"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:06:34",
+      "end": "00:06:52"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:06:53",
+      "end": "00:07:08"
+    }
+  ],
+  "diarization": {
+    "backend": "pyannote.audio",
+    "model": "pyannote/speaker-diarization-community-1",
+    "revision": "0000000",
+    "device": "cuda",
+    "speaker_count": 3,
+    "audio_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "parameters": {
+      "min_speakers": 3,
+      "max_speakers": 3
+    }
+  },
+  "sections": [
+    {
+      "title_original": "Why retries double-charge",
+      "title_translation": "重试为何造成重复扣款",
+      "reading_type": "dialogic",
+      "start": "00:00:05",
+      "end": "00:02:31",
+      "block_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007"
+      ]
+    },
+    {
+      "title_original": "Shadow rollout demo",
+      "title_translation": "影子模式上线演示",
+      "reading_type": "procedural",
+      "start": "00:02:40",
+      "end": "00:04:48",
+      "block_ids": [
+        "S008",
+        "S009",
+        "S010",
+        "S011",
+        "S012"
+      ]
+    },
+    {
+      "title_original": "Decision and follow-ups",
+      "title_translation": "决定与后续事项",
+      "reading_type": "dialogic",
+      "start": "00:05:41",
+      "end": "00:07:10",
+      "block_ids": [
+        "S013",
+        "S014",
+        "S015",
+        "S016",
+        "S017",
+        "S018"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S001",
+      "order": 1,
+      "start": "00:00:05",
+      "end": "00:00:21",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Thanks for joining. The goal today is to decide how checkout handles payment retries, because last month's incident double-charged about two hundred customers.",
+      "translation": "感谢参加。今天的目标是决定结账如何处理支付重试，因为上个月的事故让大约两百位客户被重复扣款。",
+      "confidence": "high"
+    },
+    {
+      "id": "S002",
+      "order": 2,
+      "start": "00:00:22",
+      "end": "00:00:49",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "The root cause is that the client retries on a timeout, but the server may have already captured the payment. We have no idempotency key, so the second attempt looks like a new charge.",
+      "translation": "根因是客户端在超时后重试，而服务端可能已经完成扣款。我们没有幂等键，所以第二次尝试看起来就是一笔新的扣款。",
+      "confidence": "high"
+    },
+    {
+      "id": "S003",
+      "order": 3,
+      "start": "00:00:50",
+      "end": "00:01:14",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "My proposal is a server-generated idempotency key stored for twenty-four hours. If the same key arrives again, we return the first result.",
+      "translation": "我的提议是由服务端生成幂等键并保存二十四小时。同一个键再次到达时，直接返回第一次的结果。",
+      "confidence": "high"
+    },
+    {
+      "id": "S004",
+      "order": 4,
+      "start": "00:01:16",
+      "end": "00:01:38",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I worry about the twenty-four hour window. Bank transfers can settle after two days, so a retry on day three would still double-charge.",
+      "translation": "我担心二十四小时这个窗口。银行转账可能两天后才结算，所以第三天的重试仍然会重复扣款。",
+      "confidence": "high"
+    },
+    {
+      "id": "S005",
+      "order": 5,
+      "start": "00:01:39",
+      "end": "00:01:58",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Transfers don't go through this path today, so I'd keep it at twenty-four hours for cards and revisit when we add transfers.",
+      "translation": "转账目前不走这条路径，所以我会对银行卡保持二十四小时，等加入转账时再回头看。",
+      "confidence": "high"
+    },
+    {
+      "id": "S006",
+      "order": 6,
+      "start": "00:01:57",
+      "end": "00:02:09",
+      "speaker": "SPK001",
+      "speaker_candidates": [
+        "SPK001",
+        "SPK003"
+      ],
+      "speaker_confidence": "low",
+      "overlap": true,
+      "attribution_note": "Overlaps the end of S005; assigned from the addressed question and voice continuity, not a clean acoustic turn.",
+      "language": "en",
+      "original_text": "Right, and storage cost is not really the constraint here, is it?",
+      "translation": "对，而且存储成本在这里其实不是限制，对吧？",
+      "confidence": "medium"
+    },
+    {
+      "id": "S007",
+      "order": 7,
+      "start": "00:02:10",
+      "end": "00:02:31",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "It's cheap. Uh, maybe forty... forty gigs a month at current volume.",
+      "translation": "很便宜。呃，大概四十……按目前的量每月四十 GB。",
+      "confidence": "low"
+    },
+    {
+      "id": "S008",
+      "order": 8,
+      "start": "00:02:40",
+      "end": "00:03:02",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Let me show how I'd roll it out. First, turn on the flag in shadow mode, so keys are written but never enforced.",
+      "translation": "我演示一下怎么上线。首先以影子模式打开开关，这样键会被写入但不会生效。",
+      "confidence": "high"
+    },
+    {
+      "id": "S009",
+      "order": 9,
+      "start": "00:03:03",
+      "end": "00:03:25",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "The command is rollout set idempotency, mode shadow, percent five. We start at five percent so a bug in key generation can't touch most traffic.",
+      "translation": "命令是 rollout set idempotency，mode 设为 shadow，percent 设为 5。从百分之五开始，这样键生成的缺陷碰不到大部分流量。",
+      "confidence": "high"
+    },
+    {
+      "id": "S010",
+      "order": 10,
+      "start": "00:03:26",
+      "end": "00:03:52",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Now watch the dashboard. The panel you want is would-have-deduped. It should stay near zero except for real client retries.",
+      "translation": "现在看仪表盘。要看的面板是 would-have-deduped。除了真实的客户端重试，它应该一直接近零。",
+      "confidence": "high"
+    },
+    {
+      "id": "S011",
+      "order": 11,
+      "start": "00:03:53",
+      "end": "00:04:20",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "If that panel jumps above one percent, roll back by setting the mode to off. That's a sign keys are colliding.",
+      "translation": "如果这个面板超过百分之一，就把 mode 设为 off 回滚。这说明键发生了冲突。",
+      "confidence": "high"
+    },
+    {
+      "id": "S012",
+      "order": 12,
+      "start": "00:04:21",
+      "end": "00:04:48",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Once it's flat for a full day, switch to enforce at five percent, then go to a hundred. Ramping through twenty-five is optional, I'd only do it before a holiday.",
+      "translation": "等它平稳满一整天，就切到 enforce 的百分之五，然后到百分之百。中间经过百分之二十五是可选的，我只会在假期前这么做。",
+      "confidence": "high"
+    },
+    {
+      "id": "S013",
+      "order": 13,
+      "start": "00:05:41",
+      "end": "00:06:02",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Okay. Let's go with the server-side key and twenty-four hours for cards. That's decided.",
+      "translation": "好。就用服务端生成的键，银行卡保存二十四小时。就这么定了。",
+      "confidence": "high"
+    },
+    {
+      "id": "S014",
+      "order": 14,
+      "start": "00:06:03",
+      "end": "00:06:20",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I still think the window should be configurable per payment method. I don't want to be hard-coding this again.",
+      "translation": "我还是觉得窗口应该能按支付方式配置。我不想再把它写死一次。",
+      "confidence": "high"
+    },
+    {
+      "id": "S015",
+      "order": 15,
+      "start": "00:06:21",
+      "end": "00:06:33",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Let's keep that as an open question until transfers are on the roadmap.",
+      "translation": "这个先作为开放问题，等转账进入路线图再说。",
+      "confidence": "high"
+    },
+    {
+      "id": "S016",
+      "order": 16,
+      "start": "00:06:34",
+      "end": "00:06:52",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I'll have the shadow rollout up by Friday.",
+      "translation": "我会在周五前把影子模式上线。",
+      "confidence": "high"
+    },
+    {
+      "id": "S017",
+      "order": 17,
+      "start": "00:06:53",
+      "end": "00:07:08",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Someone should probably update the client retry docs.",
+      "translation": "大概得有人更新一下客户端重试文档。",
+      "confidence": "high"
+    },
+    {
+      "id": "S018",
+      "order": 18,
+      "start": "00:07:09",
+      "end": "00:07:10",
+      "speaker": null,
+      "speaker_candidates": [],
+      "speaker_confidence": "unknown",
+      "overlap": true,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "(crosstalk) ...and the changelog too.",
+      "translation": "（多人同时说话）……还有变更日志。",
+      "confidence": "low"
+    }
+  ],
+  "frames": [
+    {
+      "id": "F001",
+      "timestamp": "00:03:10",
+      "image_path": "assets/frames/00-03-10-000.webp",
+      "related_blocks": [
+        "S009"
+      ]
+    },
+    {
+      "id": "F002",
+      "timestamp": "00:03:40",
+      "image_path": "assets/frames/00-03-40-000.webp",
+      "related_blocks": [
+        "S010",
+        "S011"
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "kind": "coverage",
+      "start": "00:04:49",
+      "end": "00:05:40",
+      "detail": "录音中断约 51 秒，这段内容缺失。"
+    },
+    {
+      "kind": "speaker",
+      "start": "00:01:57",
+      "end": "00:02:09",
+      "detail": "S006 与上一句重叠，归属为 Dana Lee 的把握较低。"
+    }
+  ]
+}

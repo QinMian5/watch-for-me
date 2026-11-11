@@ -1,0 +1,256 @@
+{
+  "audio_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "segments": [
+    {
+      "cue": "C0001",
+      "start": 5.0,
+      "end": 21.0,
+      "text": " Thanks for joining. The goal today is to decide how checkout handles payment retries, because last month's incident double-charged about two hundred customers.",
+      "speaker": "SPK001",
+      "speaker_candidates": [
+        "SPK001"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0002",
+      "start": 22.0,
+      "end": 35.5,
+      "text": " The root cause is that the client retries on a timeout, but the server may have already captured the payment.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0003",
+      "start": 35.5,
+      "end": 49.0,
+      "text": " We have no idem potency key, so the second attempt looks like a new charge.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0004",
+      "start": 50.0,
+      "end": 74.0,
+      "text": " My proposal is a server-generated idempotency key stored for twenty-four hours. If the same key arrives again, we return the first result.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0005",
+      "start": 76.0,
+      "end": 98.0,
+      "text": " I worry about the twenty-four hour window. Bank transfers can settle after two days, so a retry on day three would still double-charge.",
+      "speaker": "SPK003",
+      "speaker_candidates": [
+        "SPK003"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0006",
+      "start": 99.0,
+      "end": 118.0,
+      "text": " Transfers don't go through this path today, so I'd keep it at twenty-four hours for cards and revisit when we add transfers.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0007",
+      "start": 117.0,
+      "end": 129.0,
+      "text": " Right, and storage cost is not really the constraint here, is it?",
+      "speaker": null,
+      "speaker_candidates": [
+        "SPK001",
+        "SPK003"
+      ],
+      "overlap": true,
+      "needs_review": true
+    },
+    {
+      "cue": "C0008",
+      "start": 130.0,
+      "end": 151.0,
+      "text": " It's cheap. Uh, maybe forty... forty gigs a month at current volume.",
+      "speaker": "SPK003",
+      "speaker_candidates": [
+        "SPK003"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0009",
+      "start": 160.0,
+      "end": 171.0,
+      "text": " Let me show how I'd roll it out.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0010",
+      "start": 171.0,
+      "end": 182.0,
+      "text": " First, turn on the flag in shadow mode, so keys are written but never enforced.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0011",
+      "start": 183.0,
+      "end": 205.0,
+      "text": " The command is rollout set idempotency, mode shadow, percent five. We start at five percent so a bug in key generation can't touch most traffic.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0012",
+      "start": 206.0,
+      "end": 232.0,
+      "text": " Now watch the dashboard. The panel you want is would-have-deduped. It should stay near zero except for real client retries.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0013",
+      "start": 233.0,
+      "end": 260.0,
+      "text": " If that panel jumps above one percent, roll back by setting the mode to off. That's a sign keys are colliding.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0014",
+      "start": 261.0,
+      "end": 274.5,
+      "text": " Once it's flat for a full day, switch to enforce at five percent, then go to a hundred.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0015",
+      "start": 274.5,
+      "end": 288.0,
+      "text": " Ramping through twenty-five is optional, I'd only do it before a holiday.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0016",
+      "start": 341.0,
+      "end": 362.0,
+      "text": " okay lets go with the server side key and twenty four hours for cards thats decided",
+      "speaker": "SPK001",
+      "speaker_candidates": [
+        "SPK001"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0017",
+      "start": 363.0,
+      "end": 380.0,
+      "text": " I still think the window should be configurable per payment method. I don't want to be hard-coding this again.",
+      "speaker": "SPK003",
+      "speaker_candidates": [
+        "SPK003"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0018",
+      "start": 381.0,
+      "end": 393.0,
+      "text": " Let's keep that as an open question until transfers are on the roadmap.",
+      "speaker": "SPK001",
+      "speaker_candidates": [
+        "SPK001"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0019",
+      "start": 394.0,
+      "end": 412.0,
+      "text": " I'll have the shadow rollout up by Friday.",
+      "speaker": "SPK002",
+      "speaker_candidates": [
+        "SPK002"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0020",
+      "start": 413.0,
+      "end": 428.0,
+      "text": " Someone should probably update the client retry docs.",
+      "speaker": "SPK003",
+      "speaker_candidates": [
+        "SPK003"
+      ],
+      "overlap": false,
+      "needs_review": false
+    },
+    {
+      "cue": "C0021",
+      "start": 429.0,
+      "end": 430.0,
+      "text": " (crosstalk) ...and the changelog too.",
+      "speaker": null,
+      "speaker_candidates": [],
+      "overlap": false,
+      "needs_review": true
+    }
+  ]
+}
