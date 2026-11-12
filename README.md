@@ -8,6 +8,8 @@ Watch for Me 是一组给 agent 用的 skill。把本地视频、录音或在线
 
 在线示例：[一场英文技术演讲的阅读页](https://qinmian5.github.io/watch-for-me-demo/)（素材与署名见 [watch-for-me-demo](https://github.com/QinMian5/watch-for-me-demo)）
 
+[![阅读页：左边是笔记，右边是双语对照全文](docs/images/reading-page.png)](https://qinmian5.github.io/watch-for-me-demo/)
+
 ## 准备
 
 - 一个支持 Agent Skills 的 agent。

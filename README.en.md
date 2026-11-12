@@ -8,6 +8,8 @@ Transcription and speaker detection run locally, so recordings are not uploaded.
 
 Live example: [a reading page for an English tech talk](https://qinmian5.github.io/watch-for-me-demo/) (source and attribution in [watch-for-me-demo](https://github.com/QinMian5/watch-for-me-demo))
 
+[![The reading page: notes on the left, bilingual transcript on the right](docs/images/reading-page.png)](https://qinmian5.github.io/watch-for-me-demo/)
+
 ## Requirements
 
 - An agent that supports Agent Skills.
