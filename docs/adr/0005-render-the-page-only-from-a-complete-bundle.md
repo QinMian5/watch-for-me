@@ -12,9 +12,9 @@ A finished bundle has one title, the source's own `media.title`. It names the pa
 
 ## Considered options
 
-- **Have the assembly script write the reading copy when it builds a map.** Hand edits to the map, such as a Reader review fix or an older bundle's field deletion, would still need a separate command, so the command is needed anyway.
+- **Have the assembly script write the reading copy when it builds a map.** Hand edits to the map, such as a Reader review fix, would still need a separate command, so the command is needed anyway.
 - **Have agents read `source_map.json` directly before the Notes exist.** The map carries translations and evidence fields, which makes reading a long source in full much more expensive than reading the merged turns of the reading copy.
 
 ## Consequences
 
-An older `notes.json` with a `title` fails with `notes/unknown-field`; deleting that field is the whole migration. A translation refresh no longer renders between refreshing the map and rewriting the Notes, so the page never pairs new translations with stale Notes.
+A translation refresh no longer renders between refreshing the map and rewriting the Notes, so the page never pairs new translations with stale Notes.

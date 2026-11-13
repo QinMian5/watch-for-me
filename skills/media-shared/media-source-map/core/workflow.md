@@ -19,7 +19,7 @@ uv run --no-project --with pydantic -- python \
 
 For a raw source, also confirm source identity, duration, and source-specific evidence against the request; a matching title is only a starting point. Reuse a validated map with a matching complete normalized target-language tag. An explicit language change refreshes translations while preserving original text, IDs, times, speaker evidence, and frames: follow **Refresh translations** in `references/assembly.md`, then continue at step 6.
 
-If an explicitly supplied map fails validation, report its located errors and obtain a corrected map or usable raw source. When the errors are only fields from an earlier format, follow [older bundles](../references/older-bundles.md). When no map exists, prepare the selected raw source.
+If an explicitly supplied map fails validation, report its located errors and obtain a corrected map or usable raw source. When no map exists, prepare the selected raw source.
 
 ## 3. Prepare evidence
 

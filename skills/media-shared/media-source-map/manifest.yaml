@@ -25,5 +25,3 @@ references:
       path: references/translation.md
     - condition: media.kind is video and visual evidence is being built
       path: references/visual-evidence.md
-    - condition: an existing map fails with fields removed from an earlier format, or the bundle holds files from an earlier version
-      path: references/older-bundles.md

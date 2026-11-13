@@ -78,12 +78,6 @@
       "prompt": "Use Watch for Me for this local video, but there is no Watch for Me config in this repository or my user configuration directory.",
       "expected_output": "The shared source-map route resolves the documented configuration layers, reports all required missing keys together, and begins source-map construction after complete configuration is available.",
       "files": []
-    },
-    {
-      "id": 14,
-      "prompt": "Render this older bundle for me. Its source_map.json predates the current format and still has the old speaker fields and a top-level term list, and a hand-written Markdown transcript and an old card.json sit beside it.",
-      "expected_output": "Run the reading-copy command and report the located map/unknown-field errors. Ask for consent, then delete exactly those fields by hand and write the reading copy again without retranscribing. The page needs Notes, so do not render it without notes.json. Leave the hand-written Markdown and card.json byte-for-byte unchanged and do not read or convert them. Report that the old card.json was not migrated and new Notes can be written on request.",
-      "files": []
     }
   ]
 }

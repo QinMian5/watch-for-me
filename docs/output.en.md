@@ -51,12 +51,3 @@ Educational sources include detailed learning guidance. Conversations keep speak
 The page title is the map's `media.title`, the source's own title: the platform title for an online video, and for a local file the title you give, its metadata title, or its filename. The title stays as it is, neither translated nor rewritten.
 
 </details>
-
-<details>
-<summary>Older output folders</summary>
-
-Older output folders are not converted automatically. Their `source_map.json` fails validation because the speaker `role` and `identity_basis` fields and the top-level `glossary` have been removed. With your consent, the agent deletes those fields and renders the folder again, without transcribing again. If an old `notes.json` has a `title` field, the agent deletes it, since the title now comes from the map.
-
-Existing `media.md`, `media-card.md`, `reader.html`, and old `card.json` files stay where they are and are not read, converted, or deleted. Ask for new notes if you want them on the new page.
-
-</details>

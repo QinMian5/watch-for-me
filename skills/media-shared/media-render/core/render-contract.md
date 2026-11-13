@@ -52,4 +52,3 @@ severity code file path [ID]：message。改法：fix
 - Fix only the location a diagnostic names, then run the same command again.
 - If the error count has not dropped after two consecutive rounds, stop and report the remaining errors.
 - Address each warning by editing the Notes or map, or by stating at delivery why it stays. Warnings do not block rendering.
-- A bundle from an earlier format fails with `map/unknown-field` or `notes/unknown-field`; follow [older bundles](../../media-source-map/references/older-bundles.md).

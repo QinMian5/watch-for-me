@@ -338,7 +338,7 @@ def schema_diagnostics(error: ValidationError, file: str, prefix: str) -> list[D
                     file,
                     path,
                     "不是当前格式的字段",
-                    "删除这个字段；旧 Bundle 的退役字段要先征得用户同意",
+                    "删除这个字段",
                 )
             )
         elif kind == "json_invalid":

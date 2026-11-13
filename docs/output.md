@@ -51,12 +51,3 @@ media/<name>/
 阅读页的标题就是底稿里的 `media.title`，也就是来源自己的标题：在线视频用平台上的标题，本地文件用你给的标题、文件元数据里的标题或文件名。标题保持原文，不翻译也不改写。
 
 </details>
-
-<details>
-<summary>旧版输出文件夹</summary>
-
-旧版输出文件夹不会自动转换。它的 `source_map.json` 校验会失败，因为说话人的 `role` 和 `identity_basis` 字段以及顶层的 `glossary` 已经去掉了。你同意后，agent 会删掉这些字段并重新渲染，不重新转写。旧的 `notes.json` 里如果有 `title` 字段，agent 会删掉它，因为标题现在取自底稿。
-
-已有的 `media.md`、`media-card.md`、`reader.html` 和旧的 `card.json` 都留在原处，agent 不读、不转换、也不删除。想在新页面上看到笔记，让 agent 重新写一份。
-
-</details>
