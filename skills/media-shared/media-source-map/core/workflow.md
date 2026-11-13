@@ -29,7 +29,7 @@ Read `core/source-map-contract.md`, `core/source-preparation.md`, and the select
 
 Infer the dominant Reading Type: expository (explanation/argument), procedural (actions/results), dialogic (exchanges/positions), reportorial (events/evidence), or reflective (experience/interpretation). Preserve substantial section-level changes.
 
-Work in files under `WORK_DIR`, starting from the normalized `$WORK_DIR/cues.json` the transcription workflow returns, and process all substantive speech in order. Read the full text once, as the draft prints it. After that, print only what changed and reread a stretch by block ID when a decision needs it. The full text is read again in the Reader review after rendering.
+Work in files under `WORK_DIR`, starting from the normalized `$WORK_DIR/cues.json` the transcription workflow returns, and process all substantive speech in order. Read the full text once, as the draft prints it. After that, print only what changed and reread a stretch by block ID when a decision needs it. The full text is read again in the Reader review, from the reading copy.
 
 ### Boundaries and speakers
 

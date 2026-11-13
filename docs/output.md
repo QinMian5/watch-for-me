@@ -44,16 +44,18 @@ media/<name>/
 
 `source_map.json` 是原文底稿，存着来源信息、完整的原文和译文段落、说话人依据、章节、局限和关键帧。全文和笔记用的是同一份底稿，所以做完全文再写笔记不用重新转写。来源和语言核对无误时，已有的底稿可以直接复用。
 
-`notes.json` 存笔记的标题和纯文本段落。每段可以列出它属于哪些说话人、引用了哪些 `S...` 段落、旁边显示哪些 `F...` 关键帧。详细的说话人诊断信息留在底稿里。
+`notes.json` 存笔记的小标题和纯文本段落。每段可以列出它属于哪些说话人、引用了哪些 `S...` 段落、旁边显示哪些 `F...` 关键帧。详细的说话人诊断信息留在底稿里。
 
-`render_bundle.py` 会校验这两个文件，再写出 `source_map.md` 和 `media.html`。校验不通过时，它会报告每个问题的位置，已有文件保持不变。
+`write_reader_copy.py` 只需要底稿，用来在写笔记之前生成 `source_map.md`。`render_bundle.py` 要等笔记写完才运行：它校验这两个文件，再写出 `source_map.md` 和 `media.html`，缺少 `notes.json` 时直接报错。校验不通过时，它们会报告每个问题的位置，已有文件保持不变。
+
+阅读页的标题就是底稿里的 `media.title`，也就是来源自己的标题：在线视频用平台上的标题，本地文件用你给的标题、文件元数据里的标题或文件名。标题保持原文，不翻译也不改写。
 
 </details>
 
 <details>
 <summary>旧版输出文件夹</summary>
 
-旧版输出文件夹不会自动转换。它的 `source_map.json` 校验会失败，因为说话人的 `role` 和 `identity_basis` 字段以及顶层的 `glossary` 已经去掉了。你同意后，agent 会删掉这些字段并重新渲染，不重新转写。
+旧版输出文件夹不会自动转换。它的 `source_map.json` 校验会失败，因为说话人的 `role` 和 `identity_basis` 字段以及顶层的 `glossary` 已经去掉了。你同意后，agent 会删掉这些字段并重新渲染，不重新转写。旧的 `notes.json` 里如果有 `title` 字段，agent 会删掉它，因为标题现在取自底稿。
 
 已有的 `media.md`、`media-card.md`、`reader.html` 和旧的 `card.json` 都留在原处，agent 不读、不转换、也不删除。想在新页面上看到笔记，让 agent 重新写一份。
 

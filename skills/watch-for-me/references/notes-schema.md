@@ -4,7 +4,6 @@
 
 ```json
 {
-  "title": "Target-language title",
   "units": [
     {
       "heading": "An informative heading",
@@ -21,7 +20,7 @@
 }
 ```
 
-- `title`, `heading`, and `text` are non-empty and written in the map's `target_language`. The page takes source details such as duration and transcript provenance from the map, so the Notes leave them out.
+- `heading` and `text` are non-empty and written in the map's `target_language`. The Notes have no title: the page takes its title from `media.title`, along with source details such as duration and transcript provenance, so the Notes leave them out.
 - The first unit is the orientation and has no `cites` or `frames`, since it summarizes the whole source. Every later unit needs at least one `cites` or `frames` entry across its paragraphs, and a single paragraph in it, such as an overview sentence, may have neither.
 - `cites` lists single `S...` IDs, so write out consecutive blocks one by one. `frames` lists `F...` IDs to show beside the paragraph.
 - `speakers` lists whose content a paragraph is. Give different views their own paragraphs, list several speakers only for a shared conclusion, and leave an overview without `speakers`. The page shows each label as the shared [speaker evidence contract](../../media-shared/media-source-map/core/source-map-contract.md#audio-and-speaker-evidence) defines, adding `?` to a speaker whose cited blocks are all uncertain. When a passage has no identifiable speaker, say so in the text.

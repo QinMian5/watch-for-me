@@ -12,7 +12,7 @@ function t(key, vars) {
 }
 
 const hasTrans = MAP.blocks.some(b => b.translation);
-const S = {view: NOTES ? 'notes' : 'reader', lang: hasTrans ? 'both' : 'orig', q: '', spk: new Set(), hits: [], cur: -1, names: {}};
+const S = {view: 'notes', lang: hasTrans ? 'both' : 'orig', q: '', spk: new Set(), hits: [], cur: -1, names: {}};
 
 /* ---------- Indexes ---------- */
 const byId = new Map(MAP.blocks.map(b => [b.id, b]));
@@ -26,7 +26,7 @@ MAP.frames.forEach(f => {
   framesByBlock.get(k).push(f);
 });
 const citedBy = new Map();
-if (NOTES) NOTES.units.forEach((u, ui) => u.paragraphs.forEach((p, pi) => (p.cites || []).forEach(c => {
+NOTES.units.forEach((u, ui) => u.paragraphs.forEach((p, pi) => (p.cites || []).forEach(c => {
   if (!citedBy.has(c)) citedBy.set(c, []);
   citedBy.get(c).push({ui, pi});
 })));
@@ -224,7 +224,7 @@ function renderNotes() {
 }
 
 /* ---------- Jumps ---------- */
-const isSplit = () => !!NOTES && matchMedia('(min-width:1100px)').matches;
+const isSplit = () => matchMedia('(min-width:1100px)').matches;
 let hlEls = [];
 function mark(els) {
   hlEls.forEach(e => e.classList.remove('hl', 'flash'));
@@ -425,7 +425,7 @@ let linked = [];
 function markLinked(p) { linked.forEach(e => e.classList.remove('linked')); linked = p.pe ? [p.pe, ...p.blocks] : []; linked.forEach(e => e.classList.add('linked')); }
 function initSync() {
   syncAnch = null; ease = null; master = null; linked = [];
-  const L = document.querySelector('.pane-notes'), R = document.querySelector('.pane-reader'); if (!L) return;
+  const L = document.querySelector('.pane-notes'), R = document.querySelector('.pane-reader');
   [L, R].forEach(pane => {
     ['wheel', 'touchstart', 'pointerdown', 'keydown', 'mouseenter'].forEach(ev => pane.addEventListener(ev, () => { master = pane; }, {passive: true}));
     pane.addEventListener('scroll', () => { if (master !== pane || syncTick || syncHold) return; syncTick = true; requestAnimationFrame(() => { syncTick = false; syncFrom(pane); }); }, {passive: true});
@@ -583,7 +583,7 @@ function tocPop() {
     return link(go(view, view === 'notes' ? `[data-nsec="${si}"]` : `[data-sec="${si}"]`),
       h('span', {text: view === 'notes' ? secName(s) : s.title_translation && S.lang !== 'orig' ? s.title_translation : s.title_original}), h('span', {class: 'toc-t', text: fmtR(s.start, s.end)})); };
   let items;
-  if (NOTES && (isSplit() || S.view === 'notes')) {
+  if (isSplit() || S.view === 'notes') {
     const {places, groups} = noteGroups();
     const unitLink = (ui, time) => link(go('notes', `[data-unit="${ui}"]`),
       time ? h('span', {class: 'toc-t', text: places[ui].start ? fmtT(places[ui].start) : ''}) : null, h('span', {text: NOTES.units[ui].heading}));
@@ -599,13 +599,13 @@ function tocPop() {
 }
 function renderHeader() {
   const seg = (val, opts, on) => h('div', {class: 'seg', role: 'group'}, opts.map(o => h('button', {'aria-pressed': String(val === o.v), onclick: () => on(o.v), text: o.t})));
-  const title = NOTES ? NOTES.title : MAP.media.title;
+  const title = MAP.media.title;
   const speakers = MAP.speakers.map(s => s.id);
   if (MAP.blocks.some(b => b.speaker == null)) speakers.push(null);
   return h('header', {class: 'hdr'},
     h('h1', {title, text: title}),
     h('div', {class: 'views'},
-      NOTES ? h('span', {id: 'tabs'}, seg(S.view, [{v: 'notes', t: t('notes')}, {v: 'reader', t: t('reader')}], v => switchView(v, () => { rerenderChrome(); runFilters(); }))) : null,
+      h('span', {id: 'tabs'}, seg(S.view, [{v: 'notes', t: t('notes')}, {v: 'reader', t: t('reader')}], v => switchView(v, () => { rerenderChrome(); runFilters(); }))),
       hasTrans ? h('span', {id: 'langseg'}, seg(S.lang, [{v: 'both', t: t('both')}, {v: 'orig', t: t('orig')}, {v: 'trans', t: t('trans')}], v => keepReaderPlace(() => { S.lang = v; rootAttrs(); rerenderChrome(); runFilters(); }))) : null),
     infoPop(),
     h('div', {class: 'hdr-tools'},
@@ -652,14 +652,14 @@ function rangesIn(el, needle) {
 }
 function panes() {
   const r = document.querySelector('.pane-reader'), c = document.querySelector('.pane-notes');
-  if (isSplit()) return c ? [document.getElementById('band'), c, r] : [r];
-  return [S.view === 'notes' && c ? c : r];
+  if (isSplit()) return [document.getElementById('band'), c, r];
+  return [S.view === 'notes' ? c : r];
 }
 function runFilters() {
   const reader = document.querySelector('.pane-reader'), notes = document.querySelector('.pane-notes');
   const on = S.spk.size > 0;
   reader.querySelectorAll('.turn').forEach(turn => { turn.hidden = on && !S.spk.has(turn.dataset.spk === 'none' ? null : turn.dataset.spk); });
-  if (notes) document.querySelectorAll('.pane-notes .para, .band .para').forEach(p => { const ids = p.dataset.spk ? p.dataset.spk.split(' ') : []; p.hidden = on && ids.length > 0 && !ids.some(i => S.spk.has(i)); });
+  document.querySelectorAll('.pane-notes .para, .band .para').forEach(p => { const ids = p.dataset.spk ? p.dataset.spk.split(' ') : []; p.hidden = on && ids.length > 0 && !ids.some(i => S.spk.has(i)); });
 
   const needle = fold(S.q.trim()).low; S.hits = []; let other = 0;
   if (needle) {
@@ -706,12 +706,12 @@ function applyPanes() {
   const split = isSplit();
   document.body.classList.toggle('is-split', split);
   const c = document.querySelector('.pane-notes'), r = document.querySelector('.pane-reader');
-  if (c) c.hidden = !split && S.view !== 'notes';
+  c.hidden = !split && S.view !== 'notes';
   r.hidden = !split && S.view !== 'reader';
-  const tabs = document.getElementById('tabs'); if (tabs) tabs.hidden = split;
+  const tabs = document.getElementById('tabs'); tabs.hidden = split;
   const ls = document.getElementById('langseg'); if (ls) ls.hidden = !split && S.view !== 'reader';
-  const seg = tabs && tabs.querySelectorAll('button');
-  if (seg && seg.length) { seg[0].setAttribute('aria-pressed', String(S.view === 'notes')); seg[1].setAttribute('aria-pressed', String(S.view === 'reader')); }
+  const seg = tabs.querySelectorAll('button');
+  seg[0].setAttribute('aria-pressed', String(S.view === 'notes')); seg[1].setAttribute('aria-pressed', String(S.view === 'reader'));
   placeOrient(split);
   showBack();
 }
@@ -802,7 +802,7 @@ function rerenderChrome() {
 function render() {
   blockEls.clear(); paraEls.clear(); frameEls.clear(); rootAttrs();
   const main = h('main', {class: 'split'},
-    NOTES ? h('section', {class: 'pane pane-notes'}, renderNotes()) : null,
+    h('section', {class: 'pane pane-notes'}, renderNotes()),
     h('section', {class: 'pane pane-reader'}, renderReader()));
   const band = h('section', {class: 'band', id: 'band', hidden: true}, h('div', {class: 'col'}));
   document.getElementById('app').replaceChildren(renderHeader(), band, main);
@@ -825,5 +825,5 @@ render();
   const m = location.hash.slice(1); if (!m) return;
   if (byId.has(m)) { S.view = 'reader'; rerenderChrome(); const el = blockEls.get(m); mark([el]); el.scrollIntoView({block: 'center'}); return; }
   const c = m.match(/^n-(\d+)-(\d+)$/);
-  if (c && NOTES) { S.view = 'notes'; rerenderChrome(); const el = paraEls.get(`${c[1]}.${c[2]}`); if (el) { mark([el]); el.scrollIntoView({block: 'center'}); } }
+  if (c) { S.view = 'notes'; rerenderChrome(); const el = paraEls.get(`${c[1]}.${c[2]}`); if (el) { mark([el]); el.scrollIntoView({block: 'center'}); } }
 })();

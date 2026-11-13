@@ -87,6 +87,7 @@ class InstallationTests(unittest.TestCase):
             "media-shared/media-source-map/scripts/assemble_source_map.py",
             "media-shared/media-source-map/scripts/summarize_online_source.py",
             "media-shared/media-render/scripts/render_bundle.py",
+            "media-shared/media-render/scripts/write_reader_copy.py",
             "media-shared/media-transcription/scripts/transcribe_faster_whisper.py",
             "media-shared/media-transcription/scripts/diarize.py",
             "media-shared/media-transcription/scripts/align_speakers.py",

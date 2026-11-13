@@ -1,8 +1,8 @@
 # Workflow
 
-## 1. Render
+## 1. Write the reading copy
 
-Render `MEDIA_DIR` with the `media-render` module of [Media Shared](../../../media-shared/SKILL.md). Fix any error it reports.
+Write `source_map.md` with the reading-copy command of the `media-render` module of [Media Shared](../../../media-shared/SKILL.md). Fix any error it reports. Do not render the page yet: it needs the Notes.
 
 ## 2. Read the whole map
 
@@ -10,7 +10,7 @@ Read `source_map.md` in full: source identity, speakers, limitations, and the co
 
 ## 3. Review the Reader against the map
 
-Check each **Reader** item under **Verification** in the [output contract](output-contract.md). Correct any problem in `source_map.json` and render again.
+Check each **Reader** item under **Verification** in the [output contract](output-contract.md). Correct any problem in `source_map.json` and write the reading copy again.
 
 ## 4. Inventory the content
 
@@ -41,7 +41,7 @@ When `source_map.json.frames` is non-empty, choose the smallest subset that supp
 
 ## 7. Write and verify the Notes
 
-Write `MEDIA_DIR/notes.json` by the [Notes schema](../../references/notes-schema.md) in the map's `target_language`. The turn headers in `source_map.md` give only ID ranges, so after drafting, check `source_map.json` and list the single block IDs each paragraph actually relies on. Render as the [render contract](../../../media-shared/media-render/core/render-contract.md) describes, handle every diagnostic, and check each **Notes** item in the output contract.
+Write `MEDIA_DIR/notes.json` by the [Notes schema](../../references/notes-schema.md) in the map's `target_language`. The turn headers in `source_map.md` give only ID ranges, so after drafting, check `source_map.json` and list the single block IDs each paragraph actually relies on. With the map and the Notes both complete, render as the [render contract](../../../media-shared/media-render/core/render-contract.md) describes, handle every diagnostic, and check each **Notes** item in the output contract.
 
 ## 8. Deliver
 

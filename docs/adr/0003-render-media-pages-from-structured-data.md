@@ -17,7 +17,7 @@ Hand-written Reader Markdown made a model copy a whole transcript into a second 
 
 ## Consequences
 
-`source_map.md` keeps a Markdown extension for readability, but it is a generated projection and nobody edits it. Both rendered files are disposable and can be rebuilt at any time.
+`source_map.md` keeps a Markdown extension for readability, but it is a generated projection and nobody edits it. Both rendered files are disposable and can be rebuilt at any time. ([ADR-0005](0005-render-the-page-only-from-a-complete-bundle.md) splits the reading copy into its own command and renders the page only with Notes.)
 
 Card text is plain. Commands and formulas are not typeset, and a validator cannot notice an omitted decision or action item. Card text also does not name speakers, so renaming a speaker only requires another render.
 

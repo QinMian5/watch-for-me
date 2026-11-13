@@ -4,7 +4,7 @@ The render command projects every source block and frame once, in order, with it
 
 ## Reader
 
-- Fix every problem by editing values in `source_map.json` in place: text, translation, speaker and its evidence, confidence, and limitations. Block boundaries and IDs stay as published. Render again after each fix.
+- Fix every problem by editing values in `source_map.json` in place: text, translation, speaker and its evidence, confidence, and limitations. Block boundaries and IDs stay as published. Write the reading copy again after each fix.
 - Keep `S...` and `F...` IDs stable, so links, Notes citations, and follow-up questions keep working.
 - Record gaps and passages whose meaning stays unclear in `limitations`, where the page shows them, grouping recurring ones together.
 - Speaker labels follow the shared [speaker evidence contract](../../../media-shared/media-source-map/core/source-map-contract.md#audio-and-speaker-evidence).

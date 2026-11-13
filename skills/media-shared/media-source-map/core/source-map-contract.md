@@ -69,6 +69,8 @@ Use this shape:
 }
 ```
 
+`media.title` is the source's own title, the only title a bundle has. It is the title of the page, its heading, and the heading of the reading copy. Take it as the source gives it: an online video's title as its source fragment prints it; for local media, a title the user supplies, else the container metadata title, else the file stem. Keep its language, wording, and punctuation: do not translate, shorten, or rewrite it. Only the bundle directory name is cleaned, as `core/source-preparation.md` describes.
+
 When ASR supplies the transcript, `media.asr` records backend, quality, model, device, compute type, detected language, and reported decoding parameters.
 
 Use this ASR shape:

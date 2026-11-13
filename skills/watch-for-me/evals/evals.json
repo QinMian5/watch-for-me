@@ -4,19 +4,19 @@
     {
       "id": 1,
       "prompt": "帮我看完这个在线视频课程，结果放在 /course-videos/ 下。来源同时提供完整的原语言人工字幕和自动字幕；配置目标语言是 zh-CN。",
-      "expected_output": "Use the shared Media Source Map workflow with the explicit output root, build a new map because none exists, use the configured cookie selector, select the usable original-language manual subtitle, normalize it into cues, settle block boundaries and speakers in the block plan, record punctuation, fixes, sections, frames, and zh-CN translations in structure.json and translations.json, and build source_map.json with the assembly script rather than rewriting the English text or writing a one-off assembly script; extract shared frames, and clean the source-map workspace. Render and review the Reader, then combine the expository lens with the course guidance and write notes.json that teaches the material in a coherent learning order, explaining prerequisites, central concepts, reasoning, decisive examples, and qualifications with cites and relevant frames. Render again and deliver media.html and source_map.md.",
+      "expected_output": "Use the shared Media Source Map workflow with the explicit output root, build a new map because none exists, use the configured cookie selector, select the usable original-language manual subtitle, normalize it into cues, settle block boundaries and speakers in the block plan, record punctuation, fixes, sections, frames, and zh-CN translations in structure.json and translations.json, and build source_map.json with the assembly script rather than rewriting the English text or writing a one-off assembly script; extract shared frames, and clean the source-map workspace. Write the reading copy and review the Reader, then combine the expository lens with the course guidance and write notes.json that teaches the material in a coherent learning order, explaining prerequisites, central concepts, reasoning, decisive examples, and qualifications with cites and relevant frames. Render and deliver media.html and source_map.md.",
       "files": []
     },
     {
       "id": 2,
       "prompt": "Watch this online video for me. It has no usable subtitles. Configuration: ASR backend faster-whisper, quality balanced, target language zh-CN.",
-      "expected_output": "The shared source-map route prepares audio, runs the internal faster-whisper adapter through uv with the configured model cache and runtime profile, normalizes the ASR JSON into cues, builds blocks from a reviewed block plan, and assembles source_map.json with ASR provenance and complete translated blocks through the assembly script, without rewriting the full text. Render and review the Reader, write notes.json through the matching reading-type lens, render again, and deliver.",
+      "expected_output": "The shared source-map route prepares audio, runs the internal faster-whisper adapter through uv with the configured model cache and runtime profile, normalizes the ASR JSON into cues, builds blocks from a reviewed block plan, and assembles source_map.json with ASR provenance and complete translated blocks through the assembly script, without rewriting the full text. Write the reading copy and review the Reader, write notes.json through the matching reading-type lens, render again, and deliver.",
       "files": []
     },
     {
       "id": 3,
       "prompt": "Use Watch for Me on this existing procedural media bundle. Its valid source_map.json and frames are already complete in en-US.",
-      "expected_output": "Run the bundled Pydantic source-map validator and use the existing map when validation succeeds. Render and review the Reader, load the procedural lens, and teach the procedure through prerequisites, ordered actions, reasons, visible state changes, checks, corrections, and success conditions. Select a grounded subset of shared frames, write notes.json beside the map, and render.",
+      "expected_output": "Run the bundled Pydantic source-map validator and use the existing map when validation succeeds. Write the reading copy and review the Reader, load the procedural lens, and teach the procedure through prerequisites, ordered actions, reasons, visible state changes, checks, corrections, and success conditions. Select a grounded subset of shared frames, write notes.json beside the map, and render.",
       "files": []
     },
     {
@@ -28,19 +28,19 @@
     {
       "id": 5,
       "prompt": "Watch this local video for me in zh-CN. A complete source map exists for the same video, but its target language is en-US, and the bundle has a notes.json.",
-      "expected_output": "The shared source-map workflow reuses original blocks, sections, stable IDs, and frames; refreshes section-title and block translations for zh-CN with the assembly script's translate command; validates the updated map and renders. Review the Reader, write new Chinese Notes over the existing notes.json through the matching reading-type lens, and render again. Apply learning guidance only when the material is educational.",
+      "expected_output": "The shared source-map workflow reuses original blocks, sections, stable IDs, and frames; refreshes section-title and block translations for zh-CN with the assembly script's translate command; validates the updated map and writes the reading copy without rendering the page. Review the Reader, write new Chinese Notes over the existing notes.json through the matching reading-type lens, and only then render. Apply learning guidance only when the material is educational.",
       "files": []
     },
     {
       "id": 6,
       "prompt": "Organize this local three-person group recording in Chinese. The supplied current map has seven bilingual speech blocks, regular speaker turns including overlap, no frames, two accepted commitments, and one suggestion without acceptance.",
-      "expected_output": "Reuse the validated current map. Render it so the page shows all seven blocks with resolved speaker labels and recovered overlapping replies as their own turns. Keep acoustic review evidence in the source map and record meaning-critical gaps as limitations. Review the Reader before drafting dialogic Notes. Distinguish feedback, decisions, commitments and suggestions, express a stated owner who is a speaker through speakers, write tasks and stated deadlines in the text, and record sources in cites. The audio bundle uses the dialogic structure and its existing empty frame collection.",
+      "expected_output": "Reuse the validated current map. Write the reading copy so it shows all seven blocks with resolved speaker labels and recovered overlapping replies as their own turns. Keep acoustic review evidence in the source map and record meaning-critical gaps as limitations. Review the Reader before drafting dialogic Notes. Distinguish feedback, decisions, commitments and suggestions, express a stated owner who is a speaker through speakers, write tasks and stated deadlines in the text, and record sources in cites. The audio bundle uses the dialogic structure and its existing empty frame collection.",
       "files": []
     },
     {
       "id": 7,
       "prompt": "整理这段个人反思。已有完整有效的双语 source_map.json，reading_type 是 reflective：说话人回顾一次争执，对自己的解释不确定，说也许以后再谈，但没有作出承诺。",
-      "expected_output": "Reuse the map, render, review the Reader, write reflective notes.json, and render again. Organize the experience, interpretation, tensions, and tentative intention in the configured target language with cites. Preserve first-person perspective and uncertainty. Do not impose learning goals, a lesson plan, meeting decisions, or an invented action commitment.",
+      "expected_output": "Reuse the map, write the reading copy, review the Reader, write reflective notes.json, and render. Organize the experience, interpretation, tensions, and tentative intention in the configured target language with cites. Preserve first-person perspective and uncertainty. Do not impose learning goals, a lesson plan, meeting decisions, or an invented action commitment.",
       "files": []
     },
     {
@@ -70,7 +70,7 @@
     {
       "id": 12,
       "prompt": "Watch this existing bundle for me. Its current map names Dana Lee and Priya Nair.",
-      "expected_output": "Validate and render the map, review the Reader, write notes.json, and render. When render reports notes/speaker-name-in-text, move the attribution to the paragraph's speakers field and remove the name from the text, or state at delivery why the warning stays. Handle every warning line, and report the final exit code and any remaining warnings.",
+      "expected_output": "Validate the map and write the reading copy, review the Reader, write notes.json, and render. When render reports notes/speaker-name-in-text, move the attribution to the paragraph's speakers field and remove the name from the text, or state at delivery why the warning stays. Handle every warning line, and report the final exit code and any remaining warnings.",
       "files": []
     },
     {
@@ -82,7 +82,7 @@
     {
       "id": 14,
       "prompt": "Render this older bundle for me. Its source_map.json predates the current format and still has the old speaker fields and a top-level term list, and a hand-written Markdown transcript and an old card.json sit beside it.",
-      "expected_output": "Render and report the located map/unknown-field errors. Ask for consent, then delete exactly those fields by hand and render without retranscribing. Leave the hand-written Markdown and card.json byte-for-byte unchanged and do not read or convert them. Report that the old card.json was not migrated and new Notes can be written on request.",
+      "expected_output": "Run the reading-copy command and report the located map/unknown-field errors. Ask for consent, then delete exactly those fields by hand and write the reading copy again without retranscribing. The page needs Notes, so do not render it without notes.json. Leave the hand-written Markdown and card.json byte-for-byte unchanged and do not read or convert them. Report that the old card.json was not migrated and new Notes can be written on request.",
       "files": []
     }
   ]

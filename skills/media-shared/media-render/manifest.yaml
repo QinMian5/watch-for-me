@@ -1,5 +1,5 @@
 name: media-render
-description: Validate a Media Bundle and deterministically project its source_map.md reading copy and single-file media.html page.
+description: Validate a Media Bundle and deterministically project its source_map.md reading copy from the map, and its single-file media.html page once the Notes exist.
 always_load:
   - core/render-contract.md
 references:
