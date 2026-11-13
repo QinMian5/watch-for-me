@@ -19,7 +19,7 @@ uv run --no-project --with pydantic -- python \
 
 For a raw source, also confirm source identity, duration, and source-specific evidence against the request; a matching title is only a starting point. Reuse a validated map with a matching complete normalized target-language tag. An explicit language change refreshes translations while preserving original text, IDs, times, speaker evidence, and frames: follow **Refresh translations** in `references/assembly.md`, then continue at step 6.
 
-If an explicitly supplied map fails validation, report its located errors and obtain a corrected map or usable raw source. When the errors are only fields from an earlier format, follow [older bundles](../references/older-bundles.md). When no map exists, prepare the selected raw source.
+If an explicitly supplied map fails validation, report its located errors and obtain a corrected map or usable raw source. When no map exists, prepare the selected raw source.
 
 ## 3. Prepare evidence
 
@@ -29,7 +29,7 @@ Read `core/source-map-contract.md`, `core/source-preparation.md`, and the select
 
 Infer the dominant Reading Type: expository (explanation/argument), procedural (actions/results), dialogic (exchanges/positions), reportorial (events/evidence), or reflective (experience/interpretation). Preserve substantial section-level changes.
 
-Work in files under `WORK_DIR`, starting from the normalized `$WORK_DIR/cues.json` the transcription workflow returns, and process all substantive speech in order. Read the full text once, as the draft prints it. After that, print only what changed and reread a stretch by block ID when a decision needs it. The full text is read again in the Reader review after rendering.
+Work in files under `WORK_DIR`, starting from the normalized `$WORK_DIR/cues.json` the transcription workflow returns, and process all substantive speech in order. Read the full text once, as the draft prints it. After that, print only what changed and reread a stretch by block ID when a decision needs it. The full text is read again in the Reader review, from the reading copy.
 
 ### Boundaries and speakers
 

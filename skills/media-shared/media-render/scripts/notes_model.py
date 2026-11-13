@@ -47,7 +47,6 @@ class Unit(NotesModel):
 
 
 class Notes(NotesModel):
-    title: Text
     units: list[Unit] = Field(min_length=1)
 
 

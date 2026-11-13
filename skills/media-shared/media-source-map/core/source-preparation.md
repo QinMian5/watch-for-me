@@ -17,7 +17,7 @@ uvx --from static-ffmpeg static_ffprobe -v error \
   -show_format -show_streams -of json "$MEDIA_PATH"
 ```
 
-Record title, original URL/absolute path, source ID when available, measured duration, `kind: audio|video`, and actual stream metadata. An audio source requires a decodable audio stream. A video source requires a decodable visual stream and records whether it contains audio. Treat a cover-art image in an audio container as audio.
+Record the title by the `media.title` rule of `core/source-map-contract.md`, original URL/absolute path, source ID when available, measured duration, `kind: audio|video`, and actual stream metadata. An audio source requires a decodable audio stream. A video source requires a decodable visual stream and records whether it contains audio. Treat a cover-art image in an audio container as audio.
 
 ## Text and acoustic evidence
 

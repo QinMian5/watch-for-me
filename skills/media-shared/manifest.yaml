@@ -12,7 +12,7 @@ modules:
       path: media-source-map/manifest.yaml
     - condition: preparing audio, running local ASR, or attributing speakers
       path: media-transcription/manifest.yaml
-    - condition: rendering a Media Bundle or reading its diagnostics
+    - condition: writing a reading copy, rendering a Media Bundle, or reading their diagnostics
       path: media-render/manifest.yaml
 
 references:

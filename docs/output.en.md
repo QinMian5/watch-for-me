@@ -46,15 +46,8 @@ Educational sources include detailed learning guidance. Conversations keep speak
 
 `notes.json` holds headings and plain-text paragraphs, each of which can list the speakers it belongs to, the `S...` blocks it cites, and the `F...` frames to show beside it. Detailed speaker diagnostics remain in the map.
 
-`render_bundle.py` validates both files and writes `source_map.md` and `media.html`. If validation fails, it reports each problem's location and leaves the existing files unchanged.
+`write_reader_copy.py` needs only the map and writes `source_map.md` before the notes exist. `render_bundle.py` runs once the notes are written: it validates both files and writes `source_map.md` and `media.html`, and fails when `notes.json` is missing. If validation fails, they report each problem's location and leave the existing files unchanged.
 
-</details>
-
-<details>
-<summary>Older output folders</summary>
-
-Older output folders are not converted automatically. Their `source_map.json` fails validation because the speaker `role` and `identity_basis` fields and the top-level `glossary` have been removed. With your consent, the agent deletes those fields and renders the folder again, without transcribing again.
-
-Existing `media.md`, `media-card.md`, `reader.html`, and old `card.json` files stay where they are and are not read, converted, or deleted. Ask for new notes if you want them on the new page.
+The page title is the map's `media.title`, the source's own title: the platform title for an online video, and for a local file the title you give, its metadata title, or its filename. The title stays as it is, neither translated nor rewritten.
 
 </details>

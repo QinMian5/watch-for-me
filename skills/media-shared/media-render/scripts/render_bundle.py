@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ruff: noqa: RUF001 - diagnostics use the contract's full-width Chinese punctuation.
-"""Validate one Media Bundle and project its source_map.md and media.html."""
+"""Validate a complete Media Bundle and project its source_map.md and media.html."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import os
 import re
 import sys
 import tempfile
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
@@ -191,21 +191,18 @@ def data_island(element_id: str, value: object) -> str:
 
 
 def render_page(
-    source_map: MediaSourceMap, notes: Notes | None, labels: dict
+    source_map: MediaSourceMap, notes: Notes, labels: dict
 ) -> tuple[str, list[Diagnostic]]:
     template = (ASSETS / "template.html").read_text(encoding="utf-8")
-    title = notes.title if notes else source_map.media.title
     values = {
         "LANG": "zh-CN" if source_map.media.target_language.split("-")[0].lower() == "zh" else "en",
-        "TITLE": html.escape(title, quote=True),
+        "TITLE": html.escape(source_map.media.title, quote=True),
         "CSS": (ASSETS / "viewer.css").read_text(encoding="utf-8"),
         "JS": (ASSETS / "viewer.js").read_text(encoding="utf-8"),
         "NOSCRIPT": html.escape(labels["page"]["noscript"]),
         "UI_TEXT": data_island("ui-text", labels["page"]),
         "MAP_DATA": data_island("map-data", page_map_data(source_map)),
-        "NOTES_DATA": data_island("notes-data", notes.model_dump(exclude_defaults=True))
-        if notes
-        else "",
+        "NOTES_DATA": data_island("notes-data", notes.model_dump(exclude_defaults=True)),
     }
     slots = SLOT.findall(template)
     missing = sorted(set(values) - set(slots))
@@ -264,7 +261,7 @@ class PageScan(HTMLParser):
 
 
 def recheck(
-    page: str, reader_copy: str, source_map: MediaSourceMap, notes: Notes | None, map_sha: str
+    page: str, reader_copy: str, source_map: MediaSourceMap, map_sha: str
 ) -> list[Diagnostic]:
     """Catch data-dependent failures in the candidate artifacts before anything reaches the disk."""
 
@@ -290,14 +287,12 @@ def recheck(
     if external:
         found.append(problem("external-resource", PAGE_FILE, f"引用了外部资源：{external[:3]}"))
 
-    expected_islands = {"ui-text", "map-data"} | ({"notes-data"} if notes else set())
-    if set(scan.islands) != expected_islands:
+    if set(scan.islands) != {"ui-text", "map-data", "notes-data"}:
         found.append(problem("data-island", PAGE_FILE, f"数据岛不完整：{sorted(scan.islands)}"))
         return found
     try:
         data = json.loads("".join(scan.islands["map-data"]))
-        if notes:
-            json.loads("".join(scan.islands["notes-data"]))
+        json.loads("".join(scan.islands["notes-data"]))
     except json.JSONDecodeError as exc:
         found.append(problem("data-island", PAGE_FILE, f"数据岛不是合法 JSON：{exc.msg}"))
         return found
@@ -343,7 +338,7 @@ def schema_diagnostics(error: ValidationError, file: str, prefix: str) -> list[D
                     file,
                     path,
                     "不是当前格式的字段",
-                    "删除这个字段；旧 Bundle 的退役字段要先征得用户同意",
+                    "删除这个字段",
                 )
             )
         elif kind == "json_invalid":
@@ -384,11 +379,9 @@ class Build:
         return any(item.severity == "error" for item in self.diagnostics)
 
 
-def build_bundle(bundle: Path) -> Build:
-    result = Build()
-    map_path = bundle / MAP_FILE
+def load_map(bundle: Path, result: Build) -> MediaSourceMap | None:
     try:
-        result.inputs[MAP_FILE] = map_path.read_bytes()
+        result.inputs[MAP_FILE] = (bundle / MAP_FILE).read_bytes()
     except OSError as exc:
         result.diagnostics.append(
             Diagnostic(
@@ -400,29 +393,55 @@ def build_bundle(bundle: Path) -> Build:
                 "先生成 source_map.json",
             )
         )
-        return result
+        return None
     try:
-        source_map = MediaSourceMap.model_validate_json(result.inputs[MAP_FILE])
+        return MediaSourceMap.model_validate_json(result.inputs[MAP_FILE])
     except ValidationError as exc:
         result.diagnostics += schema_diagnostics(exc, MAP_FILE, "map")
+        return None
+
+
+def build_reader_copy(bundle: Path) -> Build:
+    """The reading copy needs only the map, so agents can read it before the Notes exist."""
+    result = Build()
+    source_map = load_map(bundle, result)
+    if source_map is not None:
+        reader_copy = render_reader_copy(
+            source_map,
+            short_sha(result.inputs[MAP_FILE]),
+            load_labels(source_map.media.target_language),
+        )
+        result.artifacts[READER_COPY_FILE] = reader_copy.encode("utf-8")
+    return result
+
+
+def build_bundle(bundle: Path) -> Build:
+    result = Build()
+    source_map = load_map(bundle, result)
+    if source_map is None:
         return result
 
     result.diagnostics += missing_frames(bundle, source_map)
     notes = None
-    notes_path = bundle / NOTES_FILE
-    if notes_path.exists():
-        try:
-            result.inputs[NOTES_FILE] = notes_path.read_bytes()
-            notes = Notes.model_validate_json(result.inputs[NOTES_FILE])
-        except OSError as exc:
-            result.diagnostics.append(
-                Diagnostic("error", "input/unreadable", NOTES_FILE, "", f"无法读取：{exc.strerror}")
+    try:
+        result.inputs[NOTES_FILE] = (bundle / NOTES_FILE).read_bytes()
+        notes = Notes.model_validate_json(result.inputs[NOTES_FILE])
+    except OSError as exc:
+        result.diagnostics.append(
+            Diagnostic(
+                "error",
+                "input/unreadable",
+                NOTES_FILE,
+                "",
+                f"无法读取：{exc.strerror}",
+                "先写 notes.json，材料齐全后再渲染",
             )
-        except ValidationError as exc:
-            result.diagnostics += schema_diagnostics(exc, NOTES_FILE, "notes")
-        else:
-            result.diagnostics += check_notes(notes, source_map)
-    if result.failed:
+        )
+    except ValidationError as exc:
+        result.diagnostics += schema_diagnostics(exc, NOTES_FILE, "notes")
+    else:
+        result.diagnostics += check_notes(notes, source_map)
+    if result.failed or notes is None:
         return result
 
     labels = load_labels(source_map.media.target_language)
@@ -431,7 +450,7 @@ def build_bundle(bundle: Path) -> Build:
     page, slot_errors = render_page(source_map, notes, labels)
     result.diagnostics += slot_errors
     if not result.failed:
-        result.diagnostics += recheck(page, reader_copy, source_map, notes, map_sha)
+        result.diagnostics += recheck(page, reader_copy, source_map, map_sha)
     if not result.failed:
         result.artifacts[READER_COPY_FILE] = reader_copy.encode("utf-8")
         result.artifacts[PAGE_FILE] = page.encode("utf-8")
@@ -496,8 +515,8 @@ def commit(bundle: Path, artifacts: dict[str, bytes]) -> list[Diagnostic]:
     return []
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
+def build_parser(description: str | None) -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument("bundle", type=Path, help="Media Bundle directory")
     parser.add_argument(
         "--check",
@@ -507,15 +526,19 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Sequence[str] | None = None) -> int:
-    parser = build_parser()
+def main(
+    argv: Sequence[str] | None = None,
+    build_artifacts: Callable[[Path], Build] = build_bundle,
+    description: str | None = __doc__,
+) -> int:
+    parser = build_parser(description)
     args = parser.parse_args(argv)
     bundle: Path = args.bundle
     if not bundle.is_dir():
         parser.error(f"not a directory: {bundle}")
 
     try:
-        build = build_bundle(bundle)
+        build = build_artifacts(bundle)
         if not build.failed:
             if args.check:
                 build.diagnostics += stale_artifacts(bundle, build.artifacts)

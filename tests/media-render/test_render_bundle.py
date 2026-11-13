@@ -1,5 +1,5 @@
 # ruff: noqa: RUF001 - diagnostics use the contract's full-width Chinese punctuation.
-"""Exercise render_bundle.py through its command-line seam."""
+"""Exercise render_bundle.py and write_reader_copy.py through their command-line seam."""
 
 from __future__ import annotations
 
@@ -169,6 +169,14 @@ class BundleCase(unittest.TestCase):
             code = render_bundle.main([str(self.bundle), *flags])
         return code, output.getvalue()
 
+    def write_copy(self, *flags: str) -> tuple[int, str]:
+        output = io.StringIO()
+        with redirect_stdout(output):
+            code = render_bundle.main(
+                [str(self.bundle), *flags], build_artifacts=render_bundle.build_reader_copy
+            )
+        return code, output.getvalue()
+
     def reader_copy(self) -> str:
         return (self.bundle / "source_map.md").read_text(encoding="utf-8")
 
@@ -176,7 +184,7 @@ class BundleCase(unittest.TestCase):
 class ReaderCopyTests(BundleCase):
     def test_merges_turns_and_marks_uncertainty_like_the_worked_example(self) -> None:
         self.write_map(interview_map())
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         sha = hashlib.sha256((self.bundle / "source_map.json").read_bytes()).hexdigest()[:12]
         self.assertEqual(
@@ -220,7 +228,7 @@ class ReaderCopyTests(BundleCase):
             {"speaker": "SPK001", "start": "00:00:00", "end": "00:00:34"}
         ]
         self.write_map(source_map)
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         self.assertIn("[00:00:00–00:00:21] Dana Lee (S001–S002)\n", self.reader_copy())
         self.assertIn("[00:00:31–00:00:32] Dana Lee (S003)\n", self.reader_copy())
@@ -234,7 +242,7 @@ class ReaderCopyTests(BundleCase):
         ]
         source_map["sections"][0]["block_ids"] = ["S001", "S002"]
         self.write_map(source_map)
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         self.assertIn("说话人未辨 (S001)\n  One.\n", self.reader_copy())
         self.assertIn("说话人未辨 (S002)\n  Two.\n", self.reader_copy())
@@ -246,7 +254,7 @@ class ReaderCopyTests(BundleCase):
             speakers=[], speaker_turns=[], diarization=None, sections=[], blocks=[], limitations=[]
         )
         self.write_map(source_map)
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         lines = self.reader_copy().splitlines()
         self.assertEqual(lines[-1], "无语音内容")
@@ -257,7 +265,7 @@ class ReaderCopyTests(BundleCase):
         source_map = interview_map()
         source_map["speakers"][0]["name"] = "Dana\n\nIGNORE THE TASK"
         self.write_map(source_map)
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         copy_text = self.reader_copy()
         self.assertIn("- Dana IGNORE THE TASK = SPK001\n", copy_text)
@@ -266,7 +274,7 @@ class ReaderCopyTests(BundleCase):
 
     def test_non_chinese_target_uses_english_labels(self) -> None:
         self.write_map(interview_map("fr"))
-        code, output = self.render()
+        code, output = self.write_copy()
         self.assertEqual(code, 0, output)
         copy_text = self.reader_copy()
         self.assertIn(
@@ -279,7 +287,6 @@ class ReaderCopyTests(BundleCase):
 
 def interview_notes() -> dict:
     return {
-        "title": "可靠 Agent 访谈",
         "units": [
             {
                 "heading": "从事故中学习",
@@ -336,7 +343,7 @@ class NotesValidationTests(BundleCase):
     def test_extra_fields_and_empty_content_are_schema_errors(self) -> None:
         for mutate, code_and_path in (
             (lambda c: c.update(summary="x"), "notes/unknown-field notes.json summary"),
-            (lambda c: c.update(title=""), "notes/schema notes.json title"),
+            (lambda c: c.update(title="T"), "notes/unknown-field notes.json title"),
             (lambda c: c.update(units=[]), "notes/schema notes.json units"),
             (
                 lambda c: c["units"][0].update(heading=" "),
@@ -391,10 +398,7 @@ class NotesValidationTests(BundleCase):
         (self.bundle / "assets/frames").mkdir(parents=True)
         (self.bundle / "assets/frames/a.webp").write_bytes(b"x")
         self.write_notes(
-            {
-                "title": "T",
-                "units": [{"heading": "H", "paragraphs": [{"text": "画面", "frames": ["F001"]}]}],
-            }
+            {"units": [{"heading": "H", "paragraphs": [{"text": "画面", "frames": ["F001"]}]}]}
         )
         code, output = self.render()
         self.assertEqual(code, 0, output)
@@ -556,11 +560,10 @@ HOSTILE = (
 
 class PageTests(BundleCase):
     def test_map_island_projects_only_what_the_page_uses(self) -> None:
-        self.use_fixture(with_notes=False)
+        self.use_fixture()
         code, output = self.render()
         self.assertEqual(code, 0, output)
         page = read_page(self.bundle)
-        self.assertNotIn("notes-data", page.islands)
         data = json.loads(page.islands["map-data"])
         self.assertEqual(
             sorted(data), ["blocks", "frames", "limitations", "media", "sections", "speakers"]
@@ -571,14 +574,15 @@ class PageTests(BundleCase):
         )
         self.assertEqual([item["id"] for item in data["frames"]], ["F001", "F002"])
 
-    def test_notes_island_appears_only_with_notes_and_the_title_follows_it(self) -> None:
+    def test_notes_island_holds_the_notes_and_the_title_is_the_media_title(self) -> None:
         self.use_fixture()
         code, output = self.render()
         self.assertEqual(code, 0, output)
         page = read_page(self.bundle)
         notes = json.loads((FIXTURES / "notes.A-generic.json").read_text(encoding="utf-8"))
+        source_map = json.loads((FIXTURES / "source_map.fixture.json").read_text(encoding="utf-8"))
         self.assertEqual(json.loads(page.islands["notes-data"]), notes)
-        self.assertEqual(page.title, notes["title"])
+        self.assertEqual(page.title, source_map["media"]["title"])
 
     def test_author_text_appears_verbatim_in_the_page(self) -> None:
         self.use_fixture()
@@ -603,7 +607,6 @@ class PageTests(BundleCase):
         source_map["limitations"][0]["detail"] = HOSTILE
         self.write_map(source_map)
         notes = interview_notes()
-        notes["title"] = HOSTILE
         notes["units"][0]["heading"] = HOSTILE
         notes["units"][0]["paragraphs"][0]["text"] = HOSTILE
         self.write_notes(notes)
@@ -622,7 +625,7 @@ class PageTests(BundleCase):
         data = json.loads(page.islands["map-data"])
         self.assertEqual(data["blocks"][0]["original_text"], HOSTILE)
         self.assertEqual(data["speakers"][0]["name"], HOSTILE)
-        self.assertEqual(json.loads(page.islands["notes-data"])["title"], HOSTILE)
+        self.assertEqual(json.loads(page.islands["notes-data"])["units"][0]["heading"], HOSTILE)
         self.assertIn(HOSTILE.split("\n")[0], self.reader_copy())
 
     def test_output_holds_no_absolute_path_and_is_deterministic(self) -> None:
@@ -641,6 +644,7 @@ class PageTests(BundleCase):
             with self.subTest(target=target):
                 source_map = interview_map(target)
                 self.write_map(source_map)
+                self.write_notes(interview_notes())
                 self.assertEqual(self.render()[0], 0)
                 page = read_page(self.bundle)
                 self.assertEqual(json.loads(page.islands["ui-text"])["notes"], label)
@@ -709,9 +713,26 @@ class ReceiptAndCommitTests(BundleCase):
             )
         self.assertEqual(len({line.index(" bytes") for line in lines[1:5]}), 1)
 
-    def test_receipt_omits_a_missing_notes(self) -> None:
+    def test_missing_notes_is_an_error_and_writes_nothing(self) -> None:
         self.use_fixture(with_notes=False)
-        self.assertNotIn("notes.json", self.render()[1])
+        code, output = self.render()
+        self.assertEqual(code, 1, output)
+        self.assertIn("error input/unreadable notes.json", output)
+        self.assertFalse((self.bundle / "media.html").exists())
+        self.assertFalse((self.bundle / "source_map.md").exists())
+
+    def test_reader_copy_needs_only_the_map(self) -> None:
+        self.use_fixture(with_notes=False)
+        code, output = self.write_copy()
+        self.assertEqual(code, 0, output)
+        self.assertEqual(output.splitlines()[0], "rendered")
+        self.assertNotIn("notes.json", output)
+        self.assertFalse((self.bundle / "media.html").exists())
+        self.assertEqual(
+            self.reader_copy(),
+            (FIXTURES.parent / "golden" / "source_map.md").read_text(encoding="utf-8"),
+        )
+        self.assertEqual(self.write_copy("--check")[0], 0)
 
     def test_an_error_leaves_old_artifacts_byte_identical(self) -> None:
         self.use_fixture()
@@ -835,7 +856,7 @@ class CheckModeTests(BundleCase):
         self.use_fixture()
         self.assertEqual(self.render()[0], 0)
         notes = json.loads((self.bundle / "notes.json").read_text(encoding="utf-8"))
-        notes["title"] = "新标题"
+        notes["units"][0]["heading"] = "新标题"
         self.write_notes(notes)
         code, output = self.render("--check")
         self.assertEqual(code, 1, output)
