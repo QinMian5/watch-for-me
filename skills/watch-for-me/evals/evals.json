@@ -44,6 +44,12 @@
       "files": ["fixtures/meeting/source_map.json"]
     },
     {
+      "id": 60,
+      "prompt": "请用 Watch for Me 帮我看这场试读研究组会。我没参加，想弄懂讨论里的算法、导师为什么让改表，以及散会后我该等谁交什么。",
+      "expected_output": "Validate the supplied map and review the Reader. Keep the meeting's dialogic structure, using the secondary expository lens and course guidance for the worked example. Render one Chinese Media Page. Read the Notes first: can a colleague explain the calculation, use it to diagnose the draft row, and identify the agreed edit? Then follow the citations. The disjoint rooms used the same completion criterion: pooling 8/10 and 8/20 counts each reader once (16/30), while 60% weights rooms equally (S002–S004). The row promises a share of readers, so the advisor asks to keep its label, change its value and show the underlying counts (S001, S005–S006). The student accepts and will send the table before Thursday’s group meeting (S006, S008). Last term’s room sizes are unknown and nobody agreed to obtain them (S007–S009). Judge the links between these answers and their evidence, allowing the source to determine the space and order each topic receives.",
+      "files": ["tests/watch-for-me/fixtures/reading-study-meeting/source_map.json"]
+    },
+    {
       "id": 7,
       "prompt": "用 Watch for Me 整理这段回顾争执的个人反思。已有双语 source_map.json，请用中文生成阅读页。",
       "expected_output": "Reuse the validated map, write and review the reading copy, draft reflective Notes, and render the Media Page. From the Notes alone, a reader can identify how the speaker first understood the request to wait (S001), what the measurements on the envelope made them reconsider (S002), and why the sister's motive remains an open question (S003). Follow the Notes citations to those Reader blocks. Check every future intention against S004: another conversation is only a possibility. Preserve the speaker's perspective and leave room for the closing question.",

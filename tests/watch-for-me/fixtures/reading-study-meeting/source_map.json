@@ -1,0 +1,290 @@
+{
+  "media": {
+    "kind": "audio",
+    "title": "试读研究组会（合成场景）",
+    "source_type": "local-audio",
+    "origin": "fixtures/reading-study-meeting/synthetic-meeting.wav",
+    "source_id": null,
+    "duration_seconds": 122,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "dialogic",
+    "transcript_provenance": "sidecar",
+    "asr": null
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": "陈老师"
+    },
+    {
+      "id": "SPK002",
+      "name": "小林"
+    },
+    {
+      "id": "SPK003",
+      "name": "小余"
+    }
+  ],
+  "speaker_turns": [
+    {
+      "speaker": "SPK002",
+      "start": "00:00:00",
+      "end": "00:00:12"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:00:12",
+      "end": "00:00:58"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:00:58",
+      "end": "00:01:10"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:01:10",
+      "end": "00:01:25"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:01:25",
+      "end": "00:01:37"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:01:37",
+      "end": "00:01:49"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:01:49",
+      "end": "00:02:02"
+    }
+  ],
+  "diarization": {
+    "backend": "pyannote.audio",
+    "model": "synthetic-fixture",
+    "revision": "synthetic",
+    "device": "cpu",
+    "speaker_count": 3,
+    "audio_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "parameters": {}
+  },
+  "sections": [
+    {
+      "title_original": "The draft results table",
+      "title_translation": "结果表里的 60%",
+      "reading_type": "dialogic",
+      "start": "00:00:00",
+      "end": "00:00:12",
+      "block_ids": [
+        "S001"
+      ]
+    },
+    {
+      "title_original": "Counting readers across rooms",
+      "title_translation": "两室读者如何合计",
+      "reading_type": "expository",
+      "start": "00:00:12",
+      "end": "00:00:58",
+      "block_ids": [
+        "S002",
+        "S003",
+        "S004"
+      ]
+    },
+    {
+      "title_original": "Revising the table and the proposed comparison",
+      "title_translation": "结果表的修改与往期对照",
+      "reading_type": "dialogic",
+      "start": "00:00:58",
+      "end": "00:02:02",
+      "block_ids": [
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S001",
+      "order": 1,
+      "start": "00:00:00",
+      "end": "00:00:12",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "For our reading study, I put 60 percent in the draft results table, under 'share of readers who finished'. I took the average of the two rooms' percentages. Can I keep that row?",
+      "translation": "试读研究的结果表草稿里，我在『读完的人占全部读者的比例』这一行填了 60%。我把两个阅览室的百分比取了平均。这行可以留吗？",
+      "confidence": "high",
+      "source_cues": [
+        "C0001",
+        "C0001"
+      ]
+    },
+    {
+      "id": "S002",
+      "order": 2,
+      "start": "00:00:12",
+      "end": "00:00:27",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Let's work it out. Each reader visited just one room. In the small room, eight of ten readers finished the booklet. In the large room, eight of twenty finished. Both counts are for the same booklet and the same definition of finishing.",
+      "translation": "我们算一下。每人只去一个阅览室。小室十人中有八人读完，大室二十人中也有八人读完。两室读的是同一本册子，对读完的定义也相同。",
+      "confidence": "high",
+      "source_cues": [
+        "C0002",
+        "C0002"
+      ]
+    },
+    {
+      "id": "S003",
+      "order": 3,
+      "start": "00:00:27",
+      "end": "00:00:43",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "For a share of all readers, each person counts once. We can add the eight finishers in each room because the groups don't overlap. That's sixteen finishers among thirty readers, just over half.",
+      "translation": "要算全部读者中读完的比例，每个人要数一次。两组人没有重叠，所以两个八可以相加。三十人里有十六人读完，略多于一半。",
+      "confidence": "high",
+      "source_cues": [
+        "C0003",
+        "C0003"
+      ]
+    },
+    {
+      "id": "S004",
+      "order": 4,
+      "start": "00:00:43",
+      "end": "00:00:58",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Eighty percent and forty percent average to sixty. That gives each room one vote. If the rooms had the same number of readers, each reader would then have equal weight too. Here the rooms have ten and twenty, so those two questions give different answers.",
+      "translation": "80% 和 40% 平均是 60%。这样两个阅览室的权重相同。假如两室人数相等，每位读者的权重也就相等了。这次两室分别是十人和二十人，所以这两个问题的答案不同。",
+      "confidence": "high",
+      "source_cues": [
+        "C0004",
+        "C0004"
+      ]
+    },
+    {
+      "id": "S005",
+      "order": 5,
+      "start": "00:00:58",
+      "end": "00:01:10",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Then I could keep sixty if I called the row 'average room completion rate'. But the question we promised to answer was about all the readers together.",
+      "translation": "那我把这一行叫作『两室完成率的平均值』就能保留 60%。可我们原本答应要回答的是全部读者合起来的情况。",
+      "confidence": "high",
+      "source_cues": [
+        "C0005",
+        "C0005"
+      ]
+    },
+    {
+      "id": "S006",
+      "order": 6,
+      "start": "00:01:10",
+      "end": "00:01:25",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Exactly. On the draft, the heading promises a reader-level result, but the cell gives a room-level average. Keep the heading and change the cell to sixteen out of thirty. Put the two room counts beside it so someone can see how you got there.",
+      "translation": "对。草稿的行名说的是全部读者，单元格里填的却是按室平均的数。保留行名，把数值改成三十分之十六。旁边列出两室各自的人数和读完人数，别人就能看出怎么算的。",
+      "confidence": "high",
+      "source_cues": [
+        "C0006",
+        "C0006"
+      ]
+    },
+    {
+      "id": "S007",
+      "order": 7,
+      "start": "00:01:25",
+      "end": "00:01:37",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Should we add last term's rooms as a comparison? I can see their percentages in the archive, but I haven't found how many readers were in each room.",
+      "translation": "要不要加上上学期的阅览室作对照？档案里能看到各室的百分比，但我还没找到各室的人数。",
+      "confidence": "high",
+      "source_cues": [
+        "C0007",
+        "C0007"
+      ]
+    },
+    {
+      "id": "S008",
+      "order": 8,
+      "start": "00:01:37",
+      "end": "00:01:49",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I'll send the corrected table before Thursday's group meeting, with sixteen out of thirty and the counts for each room. I'll leave last term out of this version.",
+      "translation": "我会在周四组会前发出改好的表，写上三十人中有十六人读完，也列出两室各自的数据。这一版先不放上学期的对照。",
+      "confidence": "high",
+      "source_cues": [
+        "C0008",
+        "C0008"
+      ]
+    },
+    {
+      "id": "S009",
+      "order": 9,
+      "start": "00:01:49",
+      "end": "00:02:02",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Agreed. With only the old percentages we can't recover the reader-level total for last term. Let's leave that comparison open. We haven't assigned anyone to look for the counts.",
+      "translation": "同意。只有旧百分比，还推不出上学期全部读者的完成率。这个对照先留着，查旧人数的事还没分给谁。",
+      "confidence": "high",
+      "source_cues": [
+        "C0009",
+        "C0009"
+      ]
+    }
+  ],
+  "frames": [],
+  "limitations": []
+}
