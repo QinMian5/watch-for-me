@@ -23,7 +23,9 @@ learning goal
 → connection to the larger mental model
 ```
 
-Preserve the intermediate steps that make a difficult idea learnable. Explain why an important step, formula, method, or design choice works and how the source demonstrates it.
+Choose worked examples by what they teach the reader to decide. Combine repeated calculations when the method and its conditions stay the same. Keep a contrasting case when a change in the givens calls for a different method or invalidates a step. Name the changed condition beside its consequence.
+
+When a board, diagram, or demonstration supplies a premise, describe the relation the reader should look for and attach the frame to the paragraph that uses it. If the lecturer skips a derivation or points to something the recording cannot resolve, say what the lesson establishes and which link the reader cannot verify.
 
 ## Course forms
 
@@ -36,4 +38,4 @@ Use paragraphs for explanation, plain text with line breaks for genuine sets, se
 
 ## Learning sufficiency
 
-Course Notes are sufficient when the reader can restate the central concepts, follow the important reasoning, work through the decisive examples, reproduce the essential procedure where applicable, and recognize the stated boundaries. Source links provide the path to the complete lesson and its lower-level evidence.
+Take a question the lesson sets out to answer. Answer it from the Notes alone, then follow the paragraph's citations to the Source Blocks or frames. Check why the decisive step works in the example and whether the same method applies to the contrasting case, if the lesson gives one. Restore any missing explanation the source gives, or identify the gap at the point where the reasoning stops.

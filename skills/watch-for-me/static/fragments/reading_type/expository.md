@@ -12,7 +12,7 @@ central question or topic
 ```
 
 - Explain each central concept before relying on it later in the Notes.
-- Develop the reasoning connecting definitions, mechanisms, claims, and conclusions.
 - Distinguish the speaker's central claim from the reasons and examples that support it.
-- Preserve comparisons, causal explanations, derivations, and qualifications that control interpretation.
+- At the decisive inference, connect the premise to the conclusion. State what the source relies on to make that step and any condition that limits it.
+- Identify the feature of a concrete example that illustrates the concept. When the speaker contrasts cases, explain which difference changes the judgment.
 - Use diagrams, slides, charts, or board states when they carry the conceptual structure.
