@@ -28,6 +28,8 @@ Confirm against the map:
 
 ### Notes
 
+For each topic, try its reader task using only the drafted Notes. Then follow the citations to the corresponding Source Blocks or Visual Evidence and check the answer, including its scope and certainty. Fill a supported omission in the paragraph where the reader needs it. If the source lacks decisive evidence, explain there what the reader cannot determine. Re-render after edits.
+
 Confirm:
 
 - The orientation and units cover the central content of the whole available map.

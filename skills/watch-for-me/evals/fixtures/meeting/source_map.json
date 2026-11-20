@@ -1,0 +1,204 @@
+{
+  "media": {
+    "kind": "audio",
+    "title": "Shift handoff pilot (synthetic meeting)",
+    "source_type": "local-audio",
+    "origin": "fixtures/shift-handoff.wav",
+    "source_id": null,
+    "duration_seconds": 66,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "dialogic",
+    "transcript_provenance": "sidecar",
+    "asr": null
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": "Mira"
+    },
+    {
+      "id": "SPK002",
+      "name": "Jo"
+    },
+    {
+      "id": "SPK003",
+      "name": "Dev"
+    }
+  ],
+  "speaker_turns": [
+    {
+      "speaker": "SPK001",
+      "start": "00:00:00",
+      "end": "00:00:10"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:00:10",
+      "end": "00:00:24"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:00:23",
+      "end": "00:00:33"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:00:33",
+      "end": "00:00:39"
+    },
+    {
+      "speaker": "SPK003",
+      "start": "00:00:39",
+      "end": "00:00:47"
+    },
+    {
+      "speaker": "SPK002",
+      "start": "00:00:47",
+      "end": "00:00:53"
+    },
+    {
+      "speaker": "SPK001",
+      "start": "00:00:53",
+      "end": "00:01:06"
+    }
+  ],
+  "diarization": {
+    "backend": "pyannote.audio",
+    "model": "synthetic-fixture",
+    "revision": "synthetic",
+    "device": "cpu",
+    "speaker_count": 3,
+    "audio_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "parameters": {}
+  },
+  "sections": [
+    {
+      "title_original": "Pilot scope and handoff review",
+      "title_translation": "试点范围与交接表评审",
+      "reading_type": "dialogic",
+      "start": "00:00:00",
+      "end": "00:01:06",
+      "block_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S001",
+      "order": 1,
+      "start": "00:00:00",
+      "end": "00:00:10",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "We need to decide where to pilot the shift handoff this week. Only the East desk has a staffed backup.",
+      "translation": "我们得决定本周在哪个服务台试行交接班。目前只有东区服务台安排了替岗人员。",
+      "confidence": "high"
+    },
+    {
+      "id": "S002",
+      "order": 2,
+      "start": "00:00:10",
+      "end": "00:00:24",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": true,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Jo, the handoff table in your draft averages both desks together. That hides how long West waits. Could you split the results by desk for the review?",
+      "translation": "乔，你草稿里的交接表把两个服务台的数据合起来取了平均值，看不出西区等了多久。能把结果按服务台拆开，供评审时看吗？",
+      "confidence": "high"
+    },
+    {
+      "id": "S003",
+      "order": 3,
+      "start": "00:00:23",
+      "end": "00:00:33",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": true,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "West's backup rota is still blank. Even with separate figures, I object to including West until someone can cover a missed handoff.",
+      "translation": "西区的替岗排班表还是空的。即使把数据拆开，在有人能补上漏掉的交接之前，我仍反对把西区纳入试点。",
+      "confidence": "high"
+    },
+    {
+      "id": "S004",
+      "order": 4,
+      "start": "00:00:33",
+      "end": "00:00:39",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Yes, I'll send the revised table by Thursday noon.",
+      "translation": "好的，我会在周四中午前发出改好的表。",
+      "confidence": "high"
+    },
+    {
+      "id": "S005",
+      "order": 5,
+      "start": "00:00:39",
+      "end": "00:00:47",
+      "speaker": "SPK003",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I'll check West's backup rota with the shift leads and report whether anyone can cover.",
+      "translation": "我来跟各班负责人核对西区的替岗排班，再反馈有没有人能替岗。",
+      "confidence": "high"
+    },
+    {
+      "id": "S006",
+      "order": 6,
+      "start": "00:00:47",
+      "end": "00:00:53",
+      "speaker": "SPK002",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "We could also start weekend handoffs straight away.",
+      "translation": "也可以马上开始试行周末交接。",
+      "confidence": "high"
+    },
+    {
+      "id": "S007",
+      "order": 7,
+      "start": "00:00:53",
+      "end": "00:01:06",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "For this week the weekday pilot at East is approved because the backup is staffed. West stays pending until coverage is confirmed. Let's leave weekends out.",
+      "translation": "东区有替岗人员，本周批准在东区的工作日试行。西区要等替岗人选确认后再定。周末先不纳入。",
+      "confidence": "high"
+    }
+  ],
+  "frames": [],
+  "limitations": []
+}
