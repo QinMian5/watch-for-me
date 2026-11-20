@@ -8,6 +8,12 @@
       "files": []
     },
     {
+      "id": 56,
+      "prompt": "请用 Watch for Me 处理《全网最细，带你拆解 Opus 5.5 做视频》（BV1VMnk68E9Q）的已有 Media Bundle。我想弄懂课里的三个例子：第 90 帧为什么能单独重算，画浅水亮纹与普通光晕时为什么选不同画法，以及旋转圆画大象的例子讲到了哪一步。包内已有完整的中文 source_map.json 和课程画面。",
+      "expected_output": "Use the validated Chinese course bundle (44 Source Blocks, 18 frames), review the Reader, and render the page through the expository lens and course guidance. From the Notes alone, explain why frame 90 can be rerendered independently and when that guarantee fails. Follow the citations to S008–S011 for the time input, fixed random seed, and preloaded assets, and to F003 for the matching two renders of frame 90. Distinguish Canvas glow from the shallow-water example that needs per-pixel shading (S015, S017). For the elephant outline, report the rotating circles and the path they trace, and identify the missing derivation of their parameters (S015). Judge the answers against the linked Reader evidence, allowing different wording and section order.",
+      "files": []
+    },
+    {
       "id": 2,
       "prompt": "Watch this online video for me. It has no usable subtitles. Configuration: ASR backend faster-whisper, quality balanced, target language zh-CN.",
       "expected_output": "The shared source-map route prepares audio, runs the internal faster-whisper adapter through uv with the configured model cache and runtime profile, normalizes the ASR JSON into cues, builds blocks from a reviewed block plan, and assembles source_map.json with ASR provenance and complete translated blocks through the assembly script, without rewriting the full text. Write the reading copy and review the Reader, write notes.json through the matching reading-type lens, render again, and deliver.",
