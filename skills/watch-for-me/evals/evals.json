@@ -39,9 +39,9 @@
     },
     {
       "id": 7,
-      "prompt": "整理这段个人反思。已有完整有效的双语 source_map.json，reading_type 是 reflective：说话人回顾一次争执，对自己的解释不确定，说也许以后再谈，但没有作出承诺。",
-      "expected_output": "Reuse the map, write the reading copy, review the Reader, write reflective notes.json, and render. Organize the experience, interpretation, tensions, and tentative intention in the configured target language with cites. Preserve first-person perspective and uncertainty. Do not impose learning goals, a lesson plan, meeting decisions, or an invented action commitment.",
-      "files": []
+      "prompt": "用 Watch for Me 整理这段回顾争执的个人反思。已有双语 source_map.json，请用中文生成阅读页。",
+      "expected_output": "Reuse the validated map, write and review the reading copy, draft reflective Notes, and render the Media Page. From the Notes alone, a reader can identify how the speaker first understood the request to wait (S001), what the measurements on the envelope made them reconsider (S002), and why the sister's motive remains an open question (S003). Follow the Notes citations to those Reader blocks. Check every future intention against S004: another conversation is only a possibility. Preserve the speaker's perspective and leave room for the closing question.",
+      "files": ["tests/watch-for-me/fixtures/reflective/source_map.json"]
     },
     {
       "id": 8,

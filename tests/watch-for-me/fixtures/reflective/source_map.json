@@ -1,0 +1,120 @@
+{
+  "media": {
+    "kind": "audio",
+    "title": "Mum's kitchen table",
+    "source_type": "local-audio",
+    "origin": "fixtures/reflective/synthetic-voice-note.wav",
+    "source_id": null,
+    "duration_seconds": 50,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "reflective",
+    "transcript_provenance": "sidecar",
+    "asr": null
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": null
+    }
+  ],
+  "speaker_turns": [],
+  "diarization": null,
+  "sections": [
+    {
+      "title_original": "The kitchen table",
+      "title_translation": "妈妈的餐桌",
+      "reading_type": "reflective",
+      "start": "00:00:00",
+      "end": "00:00:50",
+      "block_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S001",
+      "order": 1,
+      "start": "00:00:00",
+      "end": "00:00:14",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "My sister and I argued about moving Mum's kitchen table. When she said to wait before booking the van, I told her she was just putting it off. I thought she couldn't bear to let the table go.",
+      "translation": "我和姐姐为了搬妈妈的餐桌吵了一架。她说先别订搬家车，我就说她在拖。我当时觉得她是舍不得那张桌子。",
+      "confidence": "high",
+      "source_cues": [
+        "C0001",
+        "C0001"
+      ]
+    },
+    {
+      "id": "S002",
+      "order": 2,
+      "start": "00:00:14",
+      "end": "00:00:27",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "The next morning I found an envelope by the tape measure. In her handwriting on the back it said, “Table, 82 centimetres. Front door, 78.” That made me think again about why she'd asked me to wait.",
+      "translation": "第二天早上，我在卷尺旁边发现一个信封。背面是她的字：“桌子，82 厘米。大门，78 厘米。”我这才重新想，她为什么让我先等等。",
+      "confidence": "high",
+      "source_cues": [
+        "C0002",
+        "C0002"
+      ]
+    },
+    {
+      "id": "S003",
+      "order": 3,
+      "start": "00:00:27",
+      "end": "00:00:39",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Maybe she was worried we couldn't get it through the door. The numbers tell me she'd measured it. They don't tell me whether she also wanted to keep it. I didn't ask.",
+      "translation": "也许她是担心桌子过不了门。这两个数字说明她量过了。可她心里是不是也想留下桌子，我从数字上看不出来。我当时没问。",
+      "confidence": "high",
+      "source_cues": [
+        "C0003",
+        "C0003"
+      ]
+    },
+    {
+      "id": "S004",
+      "order": 4,
+      "start": "00:00:39",
+      "end": "00:00:50",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "Maybe we'll talk about it again sometime. I haven't decided whether to bring it up. What did she want me to hear when she said to wait?",
+      "translation": "也许以后我们还会再聊这件事。我还没想好要不要提。她说先等等时，究竟想让我听懂什么呢？",
+      "confidence": "high",
+      "source_cues": [
+        "C0004",
+        "C0004"
+      ]
+    }
+  ],
+  "frames": [],
+  "limitations": []
+}
