@@ -39,9 +39,9 @@
     },
     {
       "id": 6,
-      "prompt": "Organize this local three-person group recording in Chinese. The supplied current map has seven bilingual speech blocks, regular speaker turns including overlap, no frames, two accepted commitments, and one suggestion without acceptance.",
-      "expected_output": "Reuse the validated current map. Write the reading copy so it shows all seven blocks with resolved speaker labels and recovered overlapping replies as their own turns. Keep acoustic review evidence in the source map and record meaning-critical gaps as limitations. Review the Reader before drafting dialogic Notes. Distinguish feedback, decisions, commitments and suggestions, express a stated owner who is a speaker through speakers, write tasks and stated deadlines in the text, and record sources in cites. The audio bundle uses the dialogic structure and its existing empty frame collection.",
-      "files": []
+      "prompt": "用 Watch for Me 把这份三人交接班讨论的 Media Bundle 整理成中文阅读页。我没参会，需要知道本周可以在哪里试行、为什么，交接表该怎么改，以及散会后谁接下了什么。",
+      "expected_output": "Reuse the validated seven-block bilingual audio map. Review the complete Reader with the overlapping reply in its own turn and keep acoustic diagnostics in the map. On the rendered Media Page, a colleague can explain why this week's weekday pilot was approved only for East and why Dev's West coverage objection still matters (S001, S003, S007). Mira's feedback identifies the pooled average that hides West's wait. Jo agrees to split the table by desk and send it by Thursday noon (request S002, acceptance S004). Dev commits to checking the rota with shift leads and reporting back, with no stated deadline (S005). Jo's suggestion to include weekends was left out of the pilot (S006–S007). Verify each answer through the paragraph's citations and each owner through its speaker label.",
+      "files": ["fixtures/meeting/source_map.json"]
     },
     {
       "id": 7,

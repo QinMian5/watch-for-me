@@ -14,7 +14,7 @@ Check each **Reader** item under **Verification** in the [output contract](outpu
 
 ## 4. Inventory the content
 
-Through the selected Reading Type, list what the Notes must carry:
+For each topic, identify a question the reader should be able to answer from the Notes. A practical question might concern which step to choose or how to recognize its result. Use that question and the selected Reading Type to choose what to include:
 
 - the source's purpose: its central question or practical task
 - definitions, and which ideas depend on which
@@ -31,7 +31,7 @@ Open with a short orientation: the source's purpose and how the material fits to
 
 Order the units along the chain in the selected reading-type fragment, so each unit builds on the ones before it. In each unit, state the point, explain the reasoning, give the source's example or evidence, keep the conditions that change how it applies, and cite the supporting blocks.
 
-Give foundational and difficult ideas room to be followed; keep simple or repeated material brief.
+Give a premise, example, or limitation room when it changes the reader's answer. Merge repeated explanations that lead to the same conclusion.
 
 Close with what the source supports: its conclusions, decision implications, stated next steps, or remaining questions. Educational material may connect the main ideas into a usable mental model; a reflection may end on tentative understanding.
 
