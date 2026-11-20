@@ -21,8 +21,8 @@
     },
     {
       "id": 3,
-      "prompt": "Use Watch for Me on this existing procedural media bundle. Its valid source_map.json and frames are already complete in en-US.",
-      "expected_output": "Run the bundled Pydantic source-map validator and use the existing map when validation succeeds. Write the reading copy and review the Reader, load the procedural lens, and teach the procedure through prerequisites, ordered actions, reasons, visible state changes, checks, corrections, and success conditions. Select a grounded subset of shared frames, write notes.json beside the map, and render.",
+      "prompt": "用 Watch for Me 整理已有的《14 个开源项目、将近 160 种画风：AI 写代码做音乐 MV 教程》Media Bundle（BV1npxy64Exv，含完整的 zh-CN source_map.json 和画面）。我想照着做一段 MV：从头做和接着已有开场做，准备材料有什么区别？草稿出来后，怎样判断能不能渲成片？",
+      "expected_output": "Validate and reuse the supplied map, write the reading copy, review the Reader, and render procedural Notes in zh-CN. From the page, a reader can prepare the song, lyrics and style library for a skill-capable agent. To extend an existing opening, they also supply its source and ask to continue it (S027–S030, S034, F010). Following the draft review citation reveals why an 80% downbeat hit rate was insufficient: F015 shows the first draft missed the planned intensity curve and the chorus lacked the strongest motion (S046–S047). The revision passed before the final render according to the presenter in S047. Keep that report distinct from the first-draft check visible on screen.",
       "files": []
     },
     {
