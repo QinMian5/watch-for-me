@@ -84,6 +84,14 @@
       "prompt": "Use Watch for Me for this local video, but there is no Watch for Me config in this repository or my user configuration directory.",
       "expected_output": "The shared source-map route resolves the documented configuration layers, reports all required missing keys together, and begins source-map construction after complete configuration is available.",
       "files": []
+    },
+    {
+      "id": 58,
+      "prompt": "用 Watch for Me 整理随附的书展报道 Media Bundle。我想在简讯里引用中午前的到场人数。请让我看清各方数字的来历，以及记者现场数到了什么。",
+      "expected_output": "Reuse the validated reportorial map, write and review the Reader, then write Chinese Notes and render the Media Page. Reading the Notes alone, a reader can attribute about 600 to the coordinator's estimate from programmes, trace the librarian's broadcast and the volunteer captain's use of its transcript back to that one bulletin (S001–S003), and tell why the newsletter's independence is unknown (S004). The reporter counted 214 entries at the east gate from eleven to noon, including re-entries (S005). Use of the west gate by families is the narrator's inference from the tent location, with no west-gate count to establish the total (S006). Follow each conclusion's citations on the page to verify its attribution, scope, and certainty.",
+      "files": [
+        "tests/watch-for-me/fixtures/book-fair-report/source_map.json"
+      ]
     }
   ]
 }

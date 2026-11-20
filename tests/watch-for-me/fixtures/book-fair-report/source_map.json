@@ -1,0 +1,169 @@
+{
+  "media": {
+    "kind": "audio",
+    "title": "Book fair bulletin (fictional report)",
+    "source_type": "local-audio",
+    "origin": "../book-fair-bulletin.wav",
+    "source_id": null,
+    "duration_seconds": 60.873061224489796,
+    "spoken_languages": [
+      "en"
+    ],
+    "target_language": "zh-CN",
+    "reading_type": "reportorial",
+    "transcript_provenance": "sidecar",
+    "asr": null
+  },
+  "speakers": [
+    {
+      "id": "SPK001",
+      "name": null
+    }
+  ],
+  "speaker_turns": [],
+  "diarization": null,
+  "sections": [
+    {
+      "title_original": "The noon estimate",
+      "title_translation": "午间估算",
+      "reading_type": "reportorial",
+      "start": "00:00:00",
+      "end": "00:00:39.774",
+      "block_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004"
+      ]
+    },
+    {
+      "title_original": "The east entrance count",
+      "title_translation": "东入口的计数",
+      "reading_type": "reportorial",
+      "start": "00:00:39.774",
+      "end": "00:01:00.873",
+      "block_ids": [
+        "S005",
+        "S006"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "S001",
+      "order": 1,
+      "start": "00:00:00",
+      "end": "00:00:13.820",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "By noon on Saturday, how many people had visited the book fair? The coordinator's noon bulletin put it at about six hundred. She estimated that figure from the stacks of programmes handed out. Nobody counted individual visitors for the bulletin.",
+      "translation": "周六中午前有多少人逛过书展？协调员在午间简报中估计约有六百人。她是根据发出去的几摞节目单估算的，编写简报时没有人逐一清点来客。",
+      "confidence": "high",
+      "source_cues": [
+        "C0001",
+        "C0001"
+      ]
+    },
+    {
+      "id": "S002",
+      "order": 2,
+      "start": "00:00:13.820",
+      "end": "00:00:21.205",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "The librarian told listeners on community radio, “About six hundred so far. I'm reading the coordinator's noon bulletin.”",
+      "translation": "图书管理员在社区电台告诉听众：“目前大约六百人。我念的是协调员的午间简报。”",
+      "confidence": "high",
+      "source_cues": [
+        "C0002",
+        "C0002"
+      ]
+    },
+    {
+      "id": "S003",
+      "order": 3,
+      "start": "00:00:21.205",
+      "end": "00:00:30.849",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "At the welcome desk, the volunteer captain also said about six hundred. When I asked where that came from, he showed me a transcript of the librarian's broadcast.",
+      "translation": "迎宾台的志愿者领队也说大约六百人。我问他数字从哪里来，他给我看了图书管理员那段广播的文字稿。",
+      "confidence": "high",
+      "source_cues": [
+        "C0003",
+        "C0003"
+      ]
+    },
+    {
+      "id": "S004",
+      "order": 4,
+      "start": "00:00:30.849",
+      "end": "00:00:39.774",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "A stallholder's newsletter gave the same figure. It didn't cite anyone. I couldn't reach the editor before this broadcast to ask how the figure was obtained.",
+      "translation": "一位摊主的通讯也用了同一个数字，没有注明出处。播出前我没能联系上编辑，问清数字是怎么来的。",
+      "confidence": "high",
+      "source_cues": [
+        "C0004",
+        "C0004"
+      ]
+    },
+    {
+      "id": "S005",
+      "order": 5,
+      "start": "00:00:39.774",
+      "end": "00:00:50.707",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I stood at the east entrance with a clicker from eleven until noon. I counted two hundred and fourteen entries. If someone came back in, I clicked again. I couldn't see the west entrance from there.",
+      "translation": "从十一点到中午，我拿着计数器站在东入口，记下了二百一十四人次。有人再次入场，我就再按一次。从那里看不到西入口。",
+      "confidence": "high",
+      "source_cues": [
+        "C0005",
+        "C0005"
+      ]
+    },
+    {
+      "id": "S006",
+      "order": 6,
+      "start": "00:00:50.707",
+      "end": "00:01:00.873",
+      "speaker": "SPK001",
+      "speaker_candidates": [],
+      "speaker_confidence": "high",
+      "overlap": false,
+      "attribution_note": null,
+      "language": "en",
+      "original_text": "I suspect some families used the west entrance because the children's tent was beside it. We have no count from that gate. I can't use my hour at the east gate to check the fair's total.",
+      "translation": "我猜有些家庭走了西入口，因为儿童帐篷就在旁边。我们没有西入口的计数。光凭我在东入口记录的这一小时，核实不了整个书展的来客总数。",
+      "confidence": "high",
+      "source_cues": [
+        "C0006",
+        "C0006"
+      ]
+    }
+  ],
+  "frames": [],
+  "limitations": []
+}
