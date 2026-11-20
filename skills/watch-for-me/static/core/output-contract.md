@@ -28,7 +28,7 @@ Confirm against the map:
 
 ### Notes
 
-For each topic, try its reader task using only the drafted Notes. Then follow the citations to the corresponding Source Blocks or Visual Evidence and check the answer, including its scope and certainty. Fill a supported omission in the paragraph where the reader needs it. If the source lacks decisive evidence, explain there what the reader cannot determine. Re-render after edits.
+For each topic, reason through the reader's question using only the drafted Notes. For a procedure, explain which step follows from the stated conditions and what result to expect, without performing the step. Then follow the citations to the corresponding Source Blocks or Visual Evidence and check the answer, including its scope and certainty. Fill a supported omission in the paragraph where the reader needs it. If the source lacks decisive evidence, explain there what the reader cannot determine. Re-render after edits.
 
 Confirm:
 

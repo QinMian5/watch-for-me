@@ -14,7 +14,7 @@ Check each **Reader** item under **Verification** in the [output contract](outpu
 
 ## 4. Inventory the content
 
-For each topic, identify the question the reader should be able to answer or the task they should be able to carry out. Through the selected Reading Type, use that task to select what the Notes must carry:
+For each topic, identify a question the reader should be able to answer from the Notes. A practical question might concern which step to choose or how to recognize its result. Use that question and the selected Reading Type to choose what to include:
 
 - the source's purpose: its central question or practical task
 - definitions, and which ideas depend on which
