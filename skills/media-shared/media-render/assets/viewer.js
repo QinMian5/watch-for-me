@@ -224,7 +224,7 @@ function renderNotes() {
 }
 
 /* ---------- Jumps ---------- */
-const isSplit = () => matchMedia('(min-width:1100px)').matches;
+const isSplit = () => matchMedia('(min-width:641px)').matches;
 let hlEls = [];
 function mark(els) {
   hlEls.forEach(e => e.classList.remove('hl', 'flash'));
@@ -814,7 +814,7 @@ document.addEventListener('keydown', e => {
   if (e.key === '/') { e.preventDefault(); document.getElementById('q').focus(); }
 });
 document.getElementById('back').addEventListener('click', () => history.back());
-matchMedia('(min-width:1100px)').addEventListener('change', () => { rerenderChrome(); applyPanes(); syncAnch = null; runFilters(); });
+matchMedia('(min-width:641px)').addEventListener('change', () => { rerenderChrome(); applyPanes(); syncAnch = null; runFilters(); });
 document.addEventListener('click', e => {
   document.querySelectorAll('details.pop[open]').forEach(d => { if (!d.contains(e.target)) d.open = false; });
 });
