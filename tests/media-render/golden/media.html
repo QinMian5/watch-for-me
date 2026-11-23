@@ -113,7 +113,7 @@ details.pop>summary::-webkit-details-marker{display:none}
 .col{max-width:760px;margin:0 auto;padding:16px 16px 110px}
 [data-lang=both] .pane-reader .col{max-width:1100px}
 .split{display:block}
-@media (min-width:1100px){
+@media (min-width:641px){
   body.is-split .split{height:calc(100dvh - var(--hdr-h,0px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
   html:has(body.is-split){scrollbar-width:none}
   html:has(body.is-split)::-webkit-scrollbar{display:none}
@@ -160,6 +160,13 @@ details.pop>summary::-webkit-details-marker{display:none}
 [data-lang=both] .sec-title{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}
 [data-lang=both] .sec-title .second{font-size:inherit;font-weight:650;color:inherit}
 [data-lang=both] .sec-time{grid-column:1/-1}
+/* Tablet split: the Transcript pane is too narrow for side-by-side languages, so they stack. */
+@media (min-width:641px) and (max-width:1099px){
+  [data-lang=both] .tx-wrap{display:block}
+  [data-lang=both] .tx-wrap .trans{color:var(--muted);margin-top:1px}
+  [data-lang=both] .sec-title{display:block}
+  [data-lang=both] .sec-title .second{font-size:14px;font-weight:500;color:var(--muted)}
+}
 .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:2px;font-size:13px;line-height:1.5}
 .meta:empty{display:none}
 .t-row{display:flex;gap:6px;align-items:baseline}
@@ -464,7 +471,7 @@ function renderNotes() {
 }
 
 /* ---------- Jumps ---------- */
-const isSplit = () => matchMedia('(min-width:1100px)').matches;
+const isSplit = () => matchMedia('(min-width:641px)').matches;
 let hlEls = [];
 function mark(els) {
   hlEls.forEach(e => e.classList.remove('hl', 'flash'));
@@ -1054,7 +1061,7 @@ document.addEventListener('keydown', e => {
   if (e.key === '/') { e.preventDefault(); document.getElementById('q').focus(); }
 });
 document.getElementById('back').addEventListener('click', () => history.back());
-matchMedia('(min-width:1100px)').addEventListener('change', () => { rerenderChrome(); applyPanes(); syncAnch = null; runFilters(); });
+matchMedia('(min-width:641px)').addEventListener('change', () => { rerenderChrome(); applyPanes(); syncAnch = null; runFilters(); });
 document.addEventListener('click', e => {
   document.querySelectorAll('details.pop[open]').forEach(d => { if (!d.contains(e.target)) d.open = false; });
 });
